@@ -48,7 +48,7 @@ const Contact = () => {
               <div className="info-box">
                 <i className="bx bx-file"></i>
                 <h3>My Curriculum vitae</h3>
-                <p><a href="../data/manav-cv.pdf" target="_blank">Download/Open <i className="fa fa-external-link-alt"></i></a></p>
+                <p><a href="../../public/manav-cv.pdf" target="_blank">Download/Open <i className="fa fa-external-link-alt"></i></a></p>
               </div>
             </div>
           </div>
