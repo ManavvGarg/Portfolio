@@ -1,0 +1,59 @@
+.mobileNav-bottom {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+
+    section#about{ height: 300vh; }
+    section#projects{ height: 250vh; }
+    section#contact{ height: 100vh; }
+
+    .mobileNav-bottom {
+        display: flex;
+        width: 100%;
+        height: 120px;
+        margin-top: 20.5%;
+        border-top: white 1px solid;
+        bottom: 0;
+        justify-content: center;
+        align-items: center;
+        position:fixed;
+        z-index: 6000;
+        background-color: black;
+    }
+
+    .mobileNav-bottom ul {
+
+        justify-content: center;
+        align-items: center;
+        display: inline-flex;
+        list-style: none;
+        text-decoration: none;
+        color: white;
+        margin-left: 0;
+    
+    }
+
+    .mobileNav-bottom ul>li {
+        
+        padding-top: 20px;
+        font-size: 13px;
+        border: 1px solid transparent;
+        padding: auto auto auto auto;
+        width: 100%;
+        height: auto;
+        display: inline-block;
+        margin-left: 14%;
+        margin-right: 14%;
+        white-space: nowrap;
+    }
+
+    .mobileNav-bottom ul>li>a {
+        display: flex;
+        color: white;
+        pointer-events: auto !important;
+        cursor: pointer !important;
+    }
+
+
+}
