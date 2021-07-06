@@ -2,11 +2,11 @@
     display: none;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 992px) {
 
-    section#about{ height: 300vh; }
-    section#projects{ height: 250vh; }
-    section#contact{ height: 100vh; }
+    section#about{ height: 90vh; }
+    section#projects{ height: 90vh; }
+    section#contact{ height: 90vh; }
 
     .mobileNav-bottom {
         display: flex;
