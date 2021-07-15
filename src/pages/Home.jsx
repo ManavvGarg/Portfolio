@@ -16,12 +16,12 @@ import React, {useState, useEffect} from 'react';
 
 const Home = () => {
 
-  const [songName, setSongName] = useState(`Im not listening to anything right now, check back later!`);
-  const [songAlbum, setSongAlbum] = useState(`:D`);
+  const [songName, setSongName] = useState(`I'm away from keyboard atm!`);
+  const [songAlbum, setSongAlbum] = useState();
   const [songURL, setSongURL] = useState(`https://open.spotify.com/user/curiosticgameryt`);
   const [albumURL, setAlbumURL] = useState(`https://open.spotify.com/user/curiosticgameryt`);
   const [songArtists, setSongArtists] = useState([])
-  const [songImage, setSongImage] = useState(`https://w7.pngwing.com/pngs/98/704/png-transparent-insect-sweat-bees-honey-bee-bee-sting-sleeping-animals-cartoon-queen-bee.png`);
+  const [songImage, setSongImage] = useState(`https://i.ibb.co/CKt1QjN/bee.png`);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -153,7 +153,7 @@ const Home = () => {
     <div className="glassSpotifyUp">
       <a href={songURL} target="_blank" rel="noreferrer">
       <h4 style={{display:'flex', justifyContent: "center", alignContent: "center", alignItems:"center", alignSelf:"center", margin: "8% 0 5% -8%", position:"relative" }}>Currently listening to:</h4>
-      <div className="glassSpotify" style={{paddingTop: "5%"}}>
+      <div className="glassSpotify" style={{paddingTop: "5%", marginLeft: "10%", justifyContent: "center", alignContent: "center", alignItems: "center"}}>
       <img src={songImage} style={{display:'flex', justifyContent: "center", alignContent: "center", alignItems:"center", alignSelf:"center", margin: "2% auto 4% auto", position:"relative" }} alt="Song cover image" height="145vh" width="145vh" />
     <h6 style={{display:'flex', justifyContent: "center", alignContent: "center", alignItems:"center", alignSelf:"center", margin: "4% auto 0 auto", position:"relative", fontWeight: "600" }}><a href={songURL} target="_blank" rel="noreferrer" >{songName}</a></h6>
     <h6 style={{display:'flex', justifyContent: "center", alignContent: "center", alignItems:"center", alignSelf:"center", margin: "2% auto 0 auto", position:"relative", fontWeight: "400" }}>{songArtists}</h6>
