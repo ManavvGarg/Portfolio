@@ -21,7 +21,7 @@ const Home = () => {
   const [songURL, setSongURL] = useState(`https://open.spotify.com/user/curiosticgameryt`);
   const [albumURL, setAlbumURL] = useState(`https://open.spotify.com/user/curiosticgameryt`);
   const [songArtists, setSongArtists] = useState([])
-  const [songImage, setSongImage] = useState(`https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/11d65267-4764-42ee-a21c-ab753272b1fc/d8bmoq2-eb0c300d-39bb-4f3e-a705-f5f96f349fb9.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzExZDY1MjY3LTQ3NjQtNDJlZS1hMjFjLWFiNzUzMjcyYjFmY1wvZDhibW9xMi1lYjBjMzAwZC0zOWJiLTRmM2UtYTcwNS1mNWY5NmYzNDlmYjkucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.50iRXAlK0S6d4K6h8yXnG4_oIGr6pHTvWoMUwCRXMpE`);
+  const [songImage, setSongImage] = useState(`https://w7.pngwing.com/pngs/98/704/png-transparent-insect-sweat-bees-honey-bee-bee-sting-sleeping-animals-cartoon-queen-bee.png`);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
