@@ -37,8 +37,8 @@
 
     .mobileNav-bottom ul>li {
         
-        padding-top: 20px;
-        font-size: 13px;
+        padding-top: 10px;
+        font-size: 30px;
         border: 1px solid transparent;
         padding: auto auto auto auto;
         width: 100%;
@@ -54,6 +54,15 @@
         color: white;
         pointer-events: auto !important;
         cursor: pointer !important;
+    }
+
+    .glassSpotifyUp {
+
+    display: none;
+
+    }
+    .container {
+        margin-left: -10vh;
     }
 
 

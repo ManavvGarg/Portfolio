@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable react/style-prop-object */
 import HeadData from '../partials/head';
 import '../vendor/bootstrap/css/bootstrap.css';
@@ -11,9 +12,106 @@ import Credits from '../partials/credits';
 import Navbar from '../partials/navbar';
 import MobileNav from '../partials/MobileNav';
 import '../css/mobileNav.css';
+import React, {useState, useEffect} from 'react';
 
 const Home = () => {
 
+  const [songName, setSongName] = useState(`Fetching!`);
+  const [songAlbum, setSongAlbum] = useState(`Fetching!`);
+  const [songURL, setSongURL] = useState(`https://open.spotify.com/user/curiosticgameryt`);
+  const [albumURL, setAlbumURL] = useState(`https://open.spotify.com/user/curiosticgameryt`);
+  const [songArtists, setSongArtists] = useState([])
+  const [songImage, setSongImage] = useState(`https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/11d65267-4764-42ee-a21c-ab753272b1fc/d8bmoq2-eb0c300d-39bb-4f3e-a705-f5f96f349fb9.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzExZDY1MjY3LTQ3NjQtNDJlZS1hMjFjLWFiNzUzMjcyYjFmY1wvZDhibW9xMi1lYjBjMzAwZC0zOWJiLTRmM2UtYTcwNS1mNWY5NmYzNDlmYjkucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.50iRXAlK0S6d4K6h8yXnG4_oIGr6pHTvWoMUwCRXMpE`);
+
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+
+    var details = {
+      'grant_type' : 'refresh_token',
+      'refresh_token': `${process.env.REACT_APP_REF_TOKEN}`,
+      'client_id': `${process.env.REACT_APP_C_ID}`,
+      'client_secret': `${process.env.REACT_APP_C_SECRET}`
+    };
+
+    var formBody = [];
+    for(var property in details) {
+      var encodedKey = encodeURIComponent(property);
+      var encodedValue = encodeURIComponent(details[property]);
+      formBody.push(encodedKey + "=" + encodedValue);
+    }
+    formBody = formBody.join("&");
+
+    fetch(`https://accounts.spotify.com/api/token`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
+      },
+      body: formBody
+    }).then(async(response) => {
+
+      let res = await response.json();
+      let accessToken = res.access_token;
+  
+      fetch('https://api.spotify.com/v1/me/player/currently-playing', {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${accessToken}`
+        }
+      }).then(async(responsePlayback) => {
+        if (!responsePlayback.ok) {
+          return setError(true)
+        }
+      
+        //console.log(responsePlayback);
+       // return setData(responsePlayback);
+       return responsePlayback.text().then(async text => {
+         //const content = JSON.parse(text);
+
+         const n = await JSON.parse(text);
+         var arr = [];
+         n.item.artists.forEach(async e => {
+            arr.push(e.name);
+         });
+         var arr2 = arr.join(', ');
+         
+
+         await setSongName(n.item.name);
+         await setSongAlbum(n.item.album.name)
+         await setSongArtists(arr2)
+         await setSongURL(n.item.external_urls.spotify)
+         await setAlbumURL(n.item.album.external_urls.spotify)
+         await setSongImage(n.item.album.images[0].url)
+        
+      });
+
+      })
+    
+
+
+
+    }).catch((error) => {
+      
+      console.error("Error fetching data: ", error);
+      
+      setError(error);
+      
+    })
+      .finally(() => {
+          setLoading(false);
+      });
+      
+
+
+
+
+
+      }, []);
+
+      if (loading) return( <div className="loader" style={{display:'flex', justifyContent: "center", alignContent: "center", alignItems:"center", alignSelf:"center"}}><i class='bx bx-loader'></i> Loading...</div> );
+      if (error) return( <div className="loader" style={{display:'flex', justifyContent: "center", alignContent: "center", alignItems:"center", alignSelf:"center", marginTop:"20%"}}><i class='bx bxs-message-square-error'></i> An error occured! Please refresh the page!</div> );
 
 
     return (
@@ -29,9 +127,9 @@ const Home = () => {
 
       <body>
       <header id="header">
-    <div className="container">
+    <div className="container"style={{ marginLeft: "10vh" }}>
 
-      <h1 style={{fontFamily: "'JetBrains Mono', monospace", fontSize: '2.2rem'}}><a href="/">Manav garg</a></h1>
+      <h1 style={{fontFamily: "'JetBrains Mono', monospace", fontSize: '2.2rem'}}><a href="/">Manav Garg</a></h1>
 
       <div className="typing-container">
         <h2>I'm a passionate <span id="feature-text"></span><span className="input-cursor"></span> from India.</h2>
@@ -51,6 +149,21 @@ const Home = () => {
 
     </div>
     
+  
+    <div className="glassSpotifyUp">
+      <a href={songURL} target="_blank" rel="noreferrer">
+      <h4 style={{display:'flex', justifyContent: "center", alignContent: "center", alignItems:"center", alignSelf:"center", margin: "8% 0 5% -8%", position:"relative" }}>Currently listening to:</h4>
+      <div className="glassSpotify" style={{paddingTop: "5%"}}>
+      <img src={songImage} style={{display:'flex', justifyContent: "center", alignContent: "center", alignItems:"center", alignSelf:"center", margin: "2% auto 4% auto", position:"relative" }} alt="Song cover image" height="145vh" width="145vh" />
+    <h6 style={{display:'flex', justifyContent: "center", alignContent: "center", alignItems:"center", alignSelf:"center", margin: "4% auto 0 auto", position:"relative", fontWeight: "600" }}><a href={songURL} target="_blank" rel="noreferrer" >{songName}</a></h6>
+    <h6 style={{display:'flex', justifyContent: "center", alignContent: "center", alignItems:"center", alignSelf:"center", margin: "2% auto 0 auto", position:"relative", fontWeight: "400" }}>{songArtists}</h6>
+    <h6 style={{display:'flex', justifyContent: "center", alignContent: "center", alignItems:"center", alignSelf:"center", margin: "4% auto 0 auto", position:"relative", opacity:"75%" }}><u><a href={albumURL} target='_blank' rel="noreferrer">{songAlbum}</a></u></h6>
+
+      </div>
+      </a>
+      </div>
+
+  
   </header>
 
   <MobileNav />

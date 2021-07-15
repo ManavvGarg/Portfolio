@@ -14,7 +14,7 @@ body {
 body::before {
   content: "";
   position: fixed;
-  background: url("../img/bg.png") top right no-repeat;
+  background: url("https://st4.depositphotos.com/3930503/i/600/depositphotos_204733590-stock-photo-black-paper-texture-background-spotlight.jpg") top right no-repeat;
   background-size: cover;
   background-blend-mode:darken;
   left: 0;
@@ -26,7 +26,7 @@ body::before {
 
 @media only screen and (max-width: 768px) {
    body::before{
-    background: url("../img/bg.png");
+    background: url("https://st4.depositphotos.com/3930503/i/600/depositphotos_204733590-stock-photo-black-paper-texture-background-spotlight.jpg");
    }
 }
 
@@ -344,6 +344,7 @@ section .container {
 @media (max-width: 768px) {
   section {
     top: 120px;
+    left: auto;
   }
   section.section-show {
     top: 80px;
@@ -653,4 +654,25 @@ section .container {
 40% {opacity: 1;}
 60% {opacity: 0;}
 100% {opacity: 0;}
+}
+
+.glassSpotify {
+  background: rgba(255, 255, 255, 0.102);
+  box-shadow: 0 8px 32px 0 rgba(3, 3, 3, 0.20);
+  backdrop-filter: blur( 3.0px );
+  -webkit-backdrop-filter: blur( 4.0px );
+  border-radius: 10px;
+  width: 45vh;
+  height: 40vh;
+  position: relative;
+  margin-left: 5vh;
+}
+
+.glassSpotifyUp {
+  border-radius: 10px;
+  font-size: 40px;
+  width: 100vh;
+  height: 60vh;
+  margin-right: 10vh;
+  position: relative;
 }

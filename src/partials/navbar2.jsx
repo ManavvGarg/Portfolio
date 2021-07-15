@@ -18,7 +18,6 @@ const Navbar = (props) => {
           <li><a className={"nav-link " + props.about} href="/about">About</a></li>
           <li><a className={"nav-link " + props.proj} href="/projects">Projects</a></li>
           <li><a className={"nav-link " + props.cont} href="/contact">Contact</a></li>
-          <li><a className={"nav-link " + props.player} href="/player">Internet Radio</a></li>
         </ul>
       </nav>
 

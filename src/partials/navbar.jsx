@@ -7,7 +7,6 @@ const Navbar = (props) => {
           <li><a className="nav-link" href="/about">About</a></li>
           <li><a className="nav-link" href="/projects">Projects</a></li>
           <li><a className="nav-link" href="/contact">Contact</a></li>
-          <li><a className="nav-link" href="/player">Internet Radio</a></li>
         </ul>
       </nav>
 
