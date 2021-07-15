@@ -16,8 +16,8 @@ import React, {useState, useEffect} from 'react';
 
 const Home = () => {
 
-  const [songName, setSongName] = useState(`Fetching!`);
-  const [songAlbum, setSongAlbum] = useState(`Fetching!`);
+  const [songName, setSongName] = useState(`Im not listening to anything right now, check back later!`);
+  const [songAlbum, setSongAlbum] = useState(`:D`);
   const [songURL, setSongURL] = useState(`https://open.spotify.com/user/curiosticgameryt`);
   const [albumURL, setAlbumURL] = useState(`https://open.spotify.com/user/curiosticgameryt`);
   const [songArtists, setSongArtists] = useState([])
