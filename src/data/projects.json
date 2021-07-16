@@ -5,7 +5,7 @@
             "descrip": "XenFM is the best radio cum music on demand bot out there. You can just tune up some tunes by querying or tune in to 24/7 radio stations!",
             "github": "#",
             "liveDemo": "#",
-            "imageURL": "<i className='bx bx-bot'></i>"
+            "imageURL": "bx bx-bot"
         },
         
         {
@@ -13,7 +13,7 @@
            "descrip": "Rekol an interactive whatsapp and web based assistant to help the user manage their reminders, daily tasks, grocery lists, school notes, important notes and more!",
            "github": "https://github.com/ManavvGarg/Rekol",
            "liveDemo": "https://rekol.ga/",
-           "imageURL": "<i className='bx bx-bot'></i>"
+           "imageURL": "bx bx-bot"
        },
        
        {
@@ -21,7 +21,7 @@
           "descrip": "A Standalone web player for 16+ different radio stations, built from scratch! Featuring 24/7 Music to all, with easy to use player and volume controls!",
           "github": "https://github.com/ManavvGarg/Xenfm-Internet-Radio",
           "liveDemo": "https://xenfm.tk/",
-          "imageURL": "<i className='bx bx-music'></i>"
+          "imageURL": "bx bx-music"
       },
 
       {
@@ -29,7 +29,7 @@
         "descrip": "My personal portfolio made entirely with ReactJS, CSS, and SASS.",
         "github": "https://github.com/ManavvGarg/react-portfolio",
         "liveDemo": "https://manavgarg.tk/",
-        "imageURL": "<i class='bx bxl-kubernetes'></i>"
+        "imageURL": "bx bxl-kubernetes"
     }
     ]
 }
