@@ -21,7 +21,7 @@ const Home = () => {
   const [songURL, setSongURL] = useState(`https://open.spotify.com/user/curiosticgameryt`);
   const [albumURL, setAlbumURL] = useState(`https://open.spotify.com/user/curiosticgameryt`);
   const [songArtists, setSongArtists] = useState([])
-  const [songImage, setSongImage] = useState(`https://i.ibb.co/CKt1QjN/bee.png`);
+  const [songImage, setSongImage] = useState(`https://i.ibb.co/1GPBBmW/zzz.png`);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
