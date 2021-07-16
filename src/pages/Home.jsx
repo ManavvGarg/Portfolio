@@ -127,7 +127,7 @@ const Home = () => {
 
       <body>
       <header id="header">
-    <div className="container"style={{ marginLeft: "10vh" }}>
+    <div className="container">
 
       <h1 style={{fontFamily: "'JetBrains Mono', monospace", fontSize: '2.2rem'}}><a href="/">Manav Garg</a></h1>
 
@@ -152,7 +152,7 @@ const Home = () => {
   
     <div className="glassSpotifyUp">
       <a href={songURL} target="_blank" rel="noreferrer">
-      <h4 style={{display:'flex', justifyContent: "center", alignContent: "center", alignItems:"center", alignSelf:"center", margin: "8% 0 5% -8%", position:"relative" }}>Currently listening to:</h4>
+      <h4>Currently listening to:</h4>
       <div className="glassSpotify" style={{paddingTop: "5%", marginLeft: "10%", justifyContent: "center", alignContent: "center", alignItems: "center"}}>
       <img src={songImage} style={{display:'flex', justifyContent: "center", alignContent: "center", alignItems:"center", alignSelf:"center", margin: "2% auto 4% auto", position:"relative" }} alt="Song cover image" height="145vh" width="145vh" />
     <h6 style={{display:'flex', justifyContent: "center", alignContent: "center", alignItems:"center", alignSelf:"center", margin: "4% auto 0 auto", position:"relative", fontWeight: "600" }}><a href={songURL} target="_blank" rel="noreferrer" >{songName}</a></h6>
