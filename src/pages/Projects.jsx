@@ -14,7 +14,7 @@ const Projects = () => {
 
       <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
       <div className="icon-box">
-        <div className="icon"><i className={m.imageURL}></i></div>
+        <div className="icon">{m.imageURL}</div>
         <h4><a href={m.liveDemo} target="_blank" rel="noreferrer">{m.name}</a></h4>            
         <br />
         <a href={m.github} target="_blank" rel="noreferrer"><h6 style={{border: '2px white solid', borderRadius: '3%', padding: '2px 2px 2px 2px'}}>View on Github <i className='bi bi-github' style={{color: 'white'}}></i></h6></a>
