@@ -192,8 +192,8 @@ const Home = () => {
 
       <div className="social-links">
         <a href="https://github.com/ManavvGarg" target="_blank" className="github" rel="noreferrer"><i className="bi bi-github"></i></a>
-        <a href="https://twitter.com/manavvgarg__" target="_blank" className="twitter" rel="noreferrer"><i className="bi bi-twitter"></i></a>
-        <a href="https://www.instagram.com/manavvgarg" target="_blank" className="instagram" rel="noreferrer"><i className="bi bi-instagram"></i></a>
+        <a href="https://twitter.com/manavhatesu" target="_blank" className="twitter" rel="noreferrer"><i className="bi bi-twitter"></i></a>
+        <a href="https://www.instagram.com/manavhatesu" target="_blank" className="instagram" rel="noreferrer"><i className="bi bi-instagram"></i></a>
         <a href="https://www.linkedin.com/in/manavvgarg/" target="_blank" className="youtube" rel="noreferrer"><i className="bi bi-linkedin"></i></a>
         <a href="https://www.youtube.com/channel/UCNNWJbXYSnfiKr-uayTW-eA" target="_blank" className="youtube" rel="noreferrer"><i className="bi bi-youtube"></i></a>
       </div>
