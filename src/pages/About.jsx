@@ -28,7 +28,7 @@ const About = () => {
         <div className="col-lg-6">
           <ul>
             <li><i className="bi bi-chevron-right"></i> <strong>Name:</strong> <span>Manav Garg</span></li>
-            <li><i className="bi bi-chevron-right"></i> <strong>College:</strong> <span style={{fontSize: '0.8rem', textDecoration: 'underline'}}>Vellore Institute of Technology</span></li>
+            <li><i className="bi bi-chevron-right"></i> <strong>College:</strong> <span style={{fontSize: '0.8rem', textDecoration: 'underline'}}>Dropout 🙄</span></li>
           </ul>
         </div>
         <div className="col-lg-6">
