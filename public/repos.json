@@ -1,0 +1,37 @@
+[
+  {
+    "base_url": "https://github-readme-stats.vercel.app/api/pin/?username=manavvgarg&repo=",
+    "repos": {
+      "Machine Learning": [
+        "LuminSkin",
+        "STIA_VIT",
+        "AutoDoc",
+        "Business-Contract-Validation-Intel-Unnati",
+        "SentiSYS",
+        "TokenizerCompare"
+      ],
+
+      "Fullstack": [
+        "Certi-gen",
+        "nschr",
+        "Rekol"
+      ],
+
+      "Machine Learning + Fullstack":[
+        "KeyKeg"
+      ],
+
+      "App Development": [
+        "fpa-wipro"
+      ],
+
+      "Desktop Development": [
+        "FontSync"
+      ],
+
+      "Bots": [
+        "Lavalink-Music-Bot"
+      ]
+    }
+  }
+]
