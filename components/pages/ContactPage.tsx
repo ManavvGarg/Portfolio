@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 
-const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
-const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+const FORMSPREE_ID = process.env.FORMSPREE_ID;
+const RECAPTCHA_SITE_KEY = process.env.RECAPTCHA_SITE_KEY;
 
 export default function ContactPage() {
   const [status, setStatus] = useState({
@@ -190,8 +190,8 @@ export default function ContactPage() {
 //   EmailValidationResult,
 // } from "../isDisposableEmailCheck";
 
-// const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
-// const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+// const FORMSPREE_ID = process.env.FORMSPREE_ID;
+// const RECAPTCHA_SITE_KEY = process.env.RECAPTCHA_SITE_KEY;
 
 // export default function ContactPage() {
 //   const [status, setStatus] = useState({

@@ -1,3 +1,5 @@
+KICKBOX_API_KEY
+
 # Portfolio Website
 
 A minimalist, monospaced developer portfolio site built with Next.js and
@@ -72,7 +74,9 @@ Portfolio/
    SPOTIFY_CLIENT_ID=your_spotify_client_id
    SPOTIFY_CLIENT_SECRET=your_spotify_client_secret
    SPOTIFY_REFRESH_TOKEN=your_spotify_refresh_token
-   NEXT_PUBLIC_FORMSPREE_ID=your_formspree_form_id
+   FORMSPREE_ID=your_formspree_form_id
+   RECAPTCHA_SITE_KEY=your_recaptcha_key (OBTAINED FROM GOOGLE CLOUD CONSOLE)
+   KICKBOX_API_KEY= (NOT REQUIRED AS OF NOW. NOT IMPLEMENTED)
    ```
 4. **Run the development server**
 
