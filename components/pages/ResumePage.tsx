@@ -2,14 +2,41 @@ import React from "react";
 import Link from "next/link";
 
 export default function ResumePage() {
+  // Calculate total experience
+  const experiences = [
+    { start: new Date(2025, 0), end: new Date(2025, 5) }, // Jan-June 2025
+    { start: new Date(2024, 4), end: new Date(2024, 7) }, // May-Aug 2024
+    { start: new Date(2024, 4), end: new Date(2024, 5) }, // May-Jun 2024
+    { start: new Date(2023, 7), end: new Date(2023, 9) }, // Aug-Oct 2023
+    { start: new Date(2023, 7), end: new Date(2023, 10) }, // Aug-Nov 2023
+  ];
+
+  const totalMonths = experiences.reduce((total, exp) => {
+    const months = (exp.end.getFullYear() - exp.start.getFullYear()) * 12 +
+      (exp.end.getMonth() - exp.start.getMonth() + 1);
+    return total + months;
+  }, 0);
+
+  const years = Math.floor(totalMonths / 12);
+  const months = totalMonths % 12;
+  const experienceSummary = `(${
+    years > 0 ? `${years} year${years !== 1 ? "s" : ""}` : ""
+  }${years > 0 && months > 0 ? ", " : ""}${
+    months > 0 ? `${months} month${months !== 1 ? "s" : ""}` : ""
+  })`;
+
   return (
     <div className="p-4 font-mono">
       <h2 className="text-xl font-bold mb-6">My Resume</h2>
 
       <div className="text-sm">
         <p className="mb-6">
-          You can download my full resume{" "}
-          <Link href="/resume.pdf" target="_blank" className="underline">
+          You can view and download my full resume{" "}
+          <Link
+            href="/Resume_Manav_Garg.pdf"
+            target="_blank"
+            className="underline"
+          >
             here
           </Link>.
         </p>
@@ -28,59 +55,104 @@ export default function ResumePage() {
                   </u>
                 </h4>
                 <p>B.Tech, Computer Science Engineering • 2020–2025</p>
-                <p>Specialization in AI/ML • Current CGPA: 8.49/10</p>
+                <p>
+                  Specialization in AI/ML • Current CGPA:{" "}
+                  <span className="text-red-500 dark:text-red-400">8.49
+                  </span>/10 • Current Semester: 8th
+                </p>
               </div>
             </div>
           </section>
 
           <section>
-            <h3 className="font-bold text-base mb-2">Experience</h3>
+            <h3 className="font-bold text-base mb-2">
+              Experience{" "}
+              <span className="font-normal text-sm">{experienceSummary}</span>
+            </h3>
             <div className="space-y-4">
               <div>
-                <b>
+                <h4 className="font-medium">
                   <u>
-                    <h4 className="font-medium">Intel Corporation</h4>
+                    <b>IHX Pvt. Ltd. - A Perfios Company (Current)</b>
                   </u>
-                </b>
-                <p>Industrial Trainee • May–Aug 2024</p>
+                </h4>
+                <p>
+                  <span className="text-blue-800 dark:text-blue-400 font-medium">
+                    Data Scientist and Machine Learning Intern
+                  </span>{" "}
+                  • Jan–June 2025
+                </p>
+                <p>
+                  Worked on tariff digitization initiatives. Led comprehensive
+                  data mining, preparation, and cleansing processes. Developed
+                  and Trained custom model architectures and implemented robust
+                  backend APIs and deployment engines enabling scalable
+                  production deployment of machine learning solutions.
+                </p>
+              </div>
+              <div>
+                <h4 className="font-medium">
+                  <u>
+                    <b>Intel Corporation</b>
+                  </u>
+                </h4>
+                <p>
+                  <span className="text-blue-800 dark:text-blue-400 font-medium">
+                    Industrial Trainee
+                  </span>{" "}
+                  • May–Aug 2024
+                </p>
                 <p>
                   Worked on Business Contract Validation using ML for clause
                   classification and deviation detection.
                 </p>
               </div>
               <div>
-                <b>
+                <h4 className="font-medium">
                   <u>
-                    <h4 className="font-medium">Tisac Pvt. Ltd.</h4>
+                    <b>Tisac Pvt. Ltd.</b>
                   </u>
-                </b>
-                <p>Intern, Full Stack Developer & ML Engineer • May–Jun 2024</p>
+                </h4>
+                <p>
+                  <span className="text-blue-800 dark:text-blue-400 font-medium">
+                    Intern, Full Stack Developer & ML Engineer
+                  </span>{" "}
+                  • May–Jun 2024
+                </p>
                 <p>
                   Developed LLM training platform using Docker, Firebase, and
                   Jupyter environments.
                 </p>
               </div>
               <div>
-                <b>
+                <h4 className="font-medium">
                   <u>
-                    <h4 className="font-medium">
-                      StudioX (Coca-Cola × Hogarth India)
-                    </h4>
+                    <b>StudioX (Coca-Cola × Hogarth India)</b>
                   </u>
-                </b>
-                <p>Intern, Full Stack Developer • Aug–Oct 2023</p>
+                </h4>
+                <p>
+                  <span className="text-blue-800 dark:text-blue-400 font-medium">
+                    Intern, Full Stack Developer
+                  </span>{" "}
+                  • Aug–Oct 2023
+                </p>
                 <p>
                   Built web apps for ICC World Cup 2023 campaign (voting &
                   polling system).
                 </p>
               </div>
               <div>
-                <b>
+                <h4 className="font-medium">
                   <u>
-                    <h4 className="font-medium">Wipro</h4>
+                    <b>Wipro</b>
                   </u>
-                </b>
-                <p>Intern, Android Developer & ML • Aug–Nov 2023</p>
+                </h4>
+                <p>
+                  <span className="text-blue-800 dark:text-blue-400 font-medium">
+                    Intern, Android Developer & ML
+                  </span>{" "}
+                  • Aug–Nov 2023
+                </p>
                 <p>
                   Built Android app for machine vision-based object detection
                   and logging.
@@ -135,7 +207,7 @@ export default function ResumePage() {
                 </p>
               </div>
               <div>
-                <p className="font-medium  underline">
+                <p className="font-medium underline">
                   Artificial Intelligence
                 </p>
                 <p className="text-xs">
@@ -143,7 +215,7 @@ export default function ResumePage() {
                 </p>
               </div>
               <div>
-                <p className="font-medium  underline">Mathematics</p>
+                <p className="font-medium underline">Mathematics</p>
                 <p className="text-xs">
                   Linear Algebra • Calculus • Probability & Statistics
                 </p>
