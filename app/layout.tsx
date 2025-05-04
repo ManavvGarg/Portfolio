@@ -32,7 +32,7 @@ export default function RootLayout({
       <body className={`bg-white text-black dark:bg-black dark:text-white`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
