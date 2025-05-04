@@ -1,8 +1,9 @@
 import React, { useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 
-const FORMSPREE_ID = process.env.FORMSPREE_ID;
-const RECAPTCHA_SITE_KEY = process.env.RECAPTCHA_SITE_KEY;
+const NEXT_PUBLIC_FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+const NEXT_PUBLIC_RECAPTCHA_SITE_KEY =
+  process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
 export default function ContactPage() {
   const [status, setStatus] = useState({
@@ -73,11 +74,14 @@ export default function ContactPage() {
     };
 
     try {
-      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+      const res = await fetch(
+        `https://formspree.io/f/${NEXT_PUBLIC_FORMSPREE_ID}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        },
+      );
 
       const text = await res.text();
       handleServerResponse({ ok: res.ok, msg: text });
@@ -150,9 +154,9 @@ export default function ContactPage() {
           />
         </div>
 
-        {RECAPTCHA_SITE_KEY && (
+        {NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
           <ReCAPTCHA
-            sitekey={RECAPTCHA_SITE_KEY}
+            sitekey={NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
             onChange={handleOnCaptchaChange}
             ref={recaptchaRef}
           />
@@ -190,8 +194,8 @@ export default function ContactPage() {
 //   EmailValidationResult,
 // } from "../isDisposableEmailCheck";
 
-// const FORMSPREE_ID = process.env.FORMSPREE_ID;
-// const RECAPTCHA_SITE_KEY = process.env.RECAPTCHA_SITE_KEY;
+// const NEXT_PUBLIC_FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+// const NEXT_PUBLIC_RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
 // export default function ContactPage() {
 //   const [status, setStatus] = useState({
@@ -343,7 +347,7 @@ export default function ContactPage() {
 //     };
 
 //     try {
-//       const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+//       const res = await fetch(`https://formspree.io/f/${NEXT_PUBLIC_FORMSPREE_ID}`, {
 //         method: "POST",
 //         headers: { "Content-Type": "application/json" },
 //         body: JSON.stringify(payload),
@@ -505,9 +509,9 @@ export default function ContactPage() {
 //           />
 //         </div>
 
-//         {RECAPTCHA_SITE_KEY && (
+//         {NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
 //           <ReCAPTCHA
-//             sitekey={RECAPTCHA_SITE_KEY}
+//             sitekey={NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
 //             onChange={handleOnCaptchaChange}
 //             ref={recaptchaRef}
 //           />

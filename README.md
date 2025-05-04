@@ -74,8 +74,8 @@ Portfolio/
    SPOTIFY_CLIENT_ID=your_spotify_client_id
    SPOTIFY_CLIENT_SECRET=your_spotify_client_secret
    SPOTIFY_REFRESH_TOKEN=your_spotify_refresh_token
-   FORMSPREE_ID=your_formspree_form_id
-   RECAPTCHA_SITE_KEY=your_recaptcha_key (OBTAINED FROM GOOGLE CLOUD CONSOLE)
+   NEXT_PUBLIC_FORMSPREE_ID=your_formspree_form_id
+   NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your_recaptcha_key (OBTAINED FROM GOOGLE CLOUD CONSOLE)
    KICKBOX_API_KEY= (NOT REQUIRED AS OF NOW. NOT IMPLEMENTED)
    ```
 4. **Run the development server**
