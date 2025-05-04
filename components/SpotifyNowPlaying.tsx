@@ -68,7 +68,11 @@ export default function SpotifyNowPlaying() {
             </div>
           </a>
         )
-        : <span>Not listening to anything</span>}
+        : (
+          <span>
+            Not listening to anything<br />I might be Away..💤
+          </span>
+        )}
     </div>
   );
 }

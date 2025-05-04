@@ -20,6 +20,8 @@ import ContactPage from "@/components/pages/ContactPage";
 import ResumePage from "@/components/pages/ResumePage";
 import SpotifyNowPlaying from "@/components/SpotifyNowPlaying";
 
+import { ThemeToggle } from "@/components/theme-toggle";
+
 // Initialize the font
 const ibmPlexMono = IBM_Plex_Mono({
   weight: ["400", "500", "700"],
@@ -66,6 +68,8 @@ export default function Home() {
               {p}
             </button>
           ))}
+
+          <ThemeToggle />
         </div>
       </nav>
 
@@ -249,8 +253,16 @@ export default function Home() {
       </main>
 
       {/* Footer - simple copyright */}
-      <footer className="py-4 text-center text-xs">
-        © 2025 | Manav Garg
+      <footer className="py-2 text-center text-xs">
+        © 2025 |{" "}
+        <a
+          href="https://github.com/manavvgarg"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:underline"
+        >
+          Manav Garg
+        </a>
       </footer>
     </div>
   );
