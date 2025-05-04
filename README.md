@@ -1,5 +1,3 @@
-KICKBOX_API_KEY
-
 # Portfolio Website
 
 A minimalist, monospaced developer portfolio site built with Next.js and
