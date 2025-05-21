@@ -2,10 +2,10 @@ import React from "react";
 
 export default function HomePage() {
   return (
-    <div className="p-4 font-mono">
-      <h2 className="text-xl font-bold mb-6">About Me</h2>
+    <div className="p-2 md:p-4 font-mono">
+      <h2 className="text-lg md:text-xl font-bold mb-4 md:mb-6">About Me</h2>
 
-      <div className="space-y-4 text-sm">
+      <div className="space-y-3 md:space-y-4 text-xs md:text-sm">
         <p className="mb-4">
           Manav is a 21-year-old Software Developer and Machine Learning
           Engineer with expertise in graphic design and UI/UX. He possesses

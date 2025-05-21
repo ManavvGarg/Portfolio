@@ -133,3 +133,96 @@ body {
 .dark .custom-scrollbar {
   scrollbar-color: #ffffff transparent;
 }
+
+/* Add this at the end of the file to enhance mobile responsiveness */
+
+/* Improved mobile responsiveness */
+@media (max-width: 768px) {
+  /* Layout changes */
+  .layout-container {
+    flex-direction: column;
+  }
+  
+  .content-left {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    max-width: 100%;
+  }
+  
+  .content-left a {
+    word-break: break-word;
+    display: inline;
+    min-height: auto;
+  }
+  
+  /* Better spacing for icon + text combinations */
+  .content-left .flex.items-start {
+    align-items: flex-start;
+  }
+  
+  /* Ensure icons stay aligned with text */
+  .content-left .flex-shrink-0 {
+    margin-top: 2px;
+  }
+  
+  /* Better spacing on mobile */
+  .mb-4 {
+    margin-bottom: 1rem;
+  }
+  
+  /* Ensure text doesn't overflow */
+  .break-words {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  .content-right {
+    width: 100%;
+  }
+  
+  /* Improve scrollbars on mobile */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px; /* Thinner scrollbar for mobile */
+  }
+  
+  /* Adjust font sizes for mobile */
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  h2 {
+    font-size: 1.25rem;
+  }
+  
+  /* Better spacing on mobile */
+  .p-4 {
+    padding: 0.75rem;
+  }
+  
+  /* Better image handling on mobile */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Fix overflow issues */
+  .overflow-auto {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Better tap targets for mobile */
+@media (max-width: 640px) {
+  button, 
+  a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .text-xs {
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+  }
+}

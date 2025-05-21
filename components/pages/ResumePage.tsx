@@ -26,10 +26,10 @@ export default function ResumePage() {
   })`;
 
   return (
-    <div className="p-4 font-mono">
-      <h2 className="text-xl font-bold mb-6">My Resume</h2>
+    <div className="p-2 md:p-4 font-mono">
+      <h2 className="text-lg md:text-xl font-bold mb-4 md:mb-6">My Resume</h2>
 
-      <div className="text-sm">
+      <div className="text-xs md:text-sm">
         <p className="mb-6">
           You can view and download my full resume{" "}
           <Link
@@ -57,7 +57,8 @@ export default function ResumePage() {
                 <p>B.Tech, Computer Science Engineering • 2020–2025</p>
                 <p>
                   Specialization in AI/ML • Current CGPA:{" "}
-                  <span className="text-red-500 dark:text-red-400">8.49
+                  <span className="text-red-500 dark:text-red-400">
+                    8.49
                   </span>/10 • Current Semester: 8th
                 </p>
               </div>
