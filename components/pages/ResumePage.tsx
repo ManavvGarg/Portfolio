@@ -58,7 +58,7 @@ export default function ResumePage() {
                 <p>
                   Specialization in AI/ML • Current CGPA:{" "}
                   <span className="text-red-500 dark:text-red-400">
-                    8.49
+                    8.51
                   </span>/10 • Current Semester: 8th
                 </p>
               </div>
@@ -84,11 +84,20 @@ export default function ResumePage() {
                   • Jan–June 2025
                 </p>
                 <p>
-                  Worked on tariff digitization initiatives. Led comprehensive
-                  data mining, preparation, and cleansing processes. Developed
-                  and Trained custom model architectures and implemented robust
-                  backend APIs and deployment engines enabling scalable
-                  production deployment of machine learning solutions.
+                  • Worked on tariff digitization initiatives. <br />{" "}
+                  • Led comprehensive data mining, preparation, and cleansing
+                  processes.{" "}
+                  <br />• Developed and trained custom model architectures,
+                  including but not limited to YOLO, Donut, and Custom
+                  Encoder-Decoder Models, as well as using RAG + LLM based
+                  pipelines.<br />• Reduced data processing time from 24-36
+                  hours to 4-5 hours using pre processing and post processing
+                  techniques and finely constructed datasets.<br />• Implemented
+                  robust backend APIs and deployment engines enabling scalable
+                  production deployment of machine learning solutions.<br />•
+                  Introduced asynchronous processing to help APIs scale in
+                  production environment and to handle & withstand huge amount
+                  of traffic to drastically reduce the risk of downtime.
                 </p>
               </div>
               <div>

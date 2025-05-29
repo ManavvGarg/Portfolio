@@ -68,6 +68,7 @@ export default function RootLayout({
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=true"
         />
+        <meta name="color-scheme" content="dark light" />
         <meta
           name="description"
           content={metadata.description?.toString() ?? ""}
