@@ -50,7 +50,7 @@ export default function Home() {
     }
   };
 
-  const navItems: PageKey[] = ["home", "projects", "contact", "resume", "blog"];
+  const navItems: PageKey[] = ["home", "projects", "contact", "resume"];
 
   return (
     <div className={`flex flex-col min-h-screen ${ibmPlexMono.className}`}>

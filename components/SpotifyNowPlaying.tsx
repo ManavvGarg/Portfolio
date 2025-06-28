@@ -57,7 +57,7 @@ export default function SpotifyNowPlaying() {
                   overflow: "hidden",
                   textOverflow: "ellipsis",
                   display: "block",
-                  maxWidth: "90%",
+                  maxWidth: "93%",
                 }}
               >
                 {data.title}

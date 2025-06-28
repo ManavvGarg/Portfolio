@@ -85,31 +85,8 @@ export default function ResumePage() {
                   • June-Present 2025
                 </p>
                 <p>
-                  • Worked on tariff digitization initiatives. <br />{" "}
-                  • Led comprehensive data mining, preparation, and cleansing
-                  processes.{" "}
-                  <br />• Developed and trained custom model architectures,
-                  including but not limited to YOLO, Donut, and Custom
-                  Encoder-Decoder Models, as well as using RAG + LLM based
-                  pipelines.<br />• Reduced data processing time from 24-36
-                  hours to 4-5 hours using pre processing and post processing
-                  techniques and finely constructed datasets.<br />• Implemented
-                  robust backend APIs and deployment engines enabling scalable
-                  production deployment of machine learning solutions.<br />•
-                  Introduced asynchronous processing to help APIs scale in
-                  production environment and to handle & withstand huge amount
-                  of traffic to drastically reduce the risk of downtime.
-                </p>
-              </div>
-              <div>
-                <h4 className="font-medium">
-                  <u>
-                    <b>IHX Pvt. Ltd. - A Perfios Company (Current)</b>
-                  </u>
-                </h4>
-                <p>
                   <span className="text-blue-800 dark:text-blue-400 font-medium">
-                    Data Scientist and Machine Learning Intern
+                    Data Scientist and Machine Learning, Intern
                   </span>{" "}
                   • Jan–June 2025
                 </p>
@@ -130,6 +107,7 @@ export default function ResumePage() {
                   of traffic to drastically reduce the risk of downtime.
                 </p>
               </div>
+
               <div>
                 <h4 className="font-medium">
                   <u>
