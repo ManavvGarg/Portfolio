@@ -4,6 +4,7 @@ import Link from "next/link";
 export default function ResumePage() {
   // Calculate total experience
   const experiences = [
+    { start: new Date(2025, 5), end: new Date() }, // June 2025-Present
     { start: new Date(2025, 0), end: new Date(2025, 5) }, // Jan-June 2025
     { start: new Date(2024, 4), end: new Date(2024, 7) }, // May-Aug 2024
     { start: new Date(2024, 4), end: new Date(2024, 5) }, // May-Jun 2024
@@ -71,6 +72,35 @@ export default function ResumePage() {
               <span className="font-normal text-sm">{experienceSummary}</span>
             </h3>
             <div className="space-y-4">
+              <div>
+                <h4 className="font-medium">
+                  <u>
+                    <b>IHX Pvt. Ltd. - A Perfios Company (Current)</b>
+                  </u>
+                </h4>
+                <p>
+                  <span className="text-blue-800 dark:text-blue-400 font-medium">
+                    Associate Data Scientist
+                  </span>{" "}
+                  • June-Present 2025
+                </p>
+                <p>
+                  • Worked on tariff digitization initiatives. <br />{" "}
+                  • Led comprehensive data mining, preparation, and cleansing
+                  processes.{" "}
+                  <br />• Developed and trained custom model architectures,
+                  including but not limited to YOLO, Donut, and Custom
+                  Encoder-Decoder Models, as well as using RAG + LLM based
+                  pipelines.<br />• Reduced data processing time from 24-36
+                  hours to 4-5 hours using pre processing and post processing
+                  techniques and finely constructed datasets.<br />• Implemented
+                  robust backend APIs and deployment engines enabling scalable
+                  production deployment of machine learning solutions.<br />•
+                  Introduced asynchronous processing to help APIs scale in
+                  production environment and to handle & withstand huge amount
+                  of traffic to drastically reduce the risk of downtime.
+                </p>
+              </div>
               <div>
                 <h4 className="font-medium">
                   <u>
