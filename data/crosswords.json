@@ -1,23 +1,586 @@
 [
   {
-    "id": "latin-001",
-    "title": "Latin Palindrome (Sator Square)",
-    "grid": ["SATOR", "AREPO", "TENET", "OPERA", "ROTAS"],
+    "id": "mini-001",
+    "title": "Morning Start",
+    "grid": ["RISE#", "BREW#", "ALARM", "#EGGS", "SMILE"],
     "clues": {
       "across": [
-        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "SATOR", "clue": "The sower, in Latin (famous palindrome square)", "length": 5 },
-        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "AREPO", "clue": "Name appearing in the Sator Square", "length": 5 },
-        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "TENET", "clue": "Core belief or principle", "length": 5 },
-        { "number": 4, "direction": "A", "row": 3, "col": 0, "answer": "OPERA", "clue": "Works for the stage", "length": 5 },
-        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "ROTAS", "clue": "Wheels, in Latin", "length": 5 }
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "RISE", "clue": "Get out of bed", "length": 4 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "BREW", "clue": "Make coffee", "length": 4 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "ALARM", "clue": "It rings at 7 a.m., maybe", "length": 5 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "EGGS", "clue": "Omelet starters", "length": 4 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "SMILE", "clue": "What to start the day with", "length": 5 }
       ],
       "down": [
-        { "number": 1, "direction": "D", "row": 0, "col": 0, "answer": "SATOR", "clue": "Top-left to bottom: the sower", "length": 5 },
-        { "number": 2, "direction": "D", "row": 0, "col": 1, "answer": "AREPO", "clue": "Top row second column downward name", "length": 5 },
-        { "number": 3, "direction": "D", "row": 0, "col": 2, "answer": "TENET", "clue": "Palindromic word meaning principle", "length": 5 },
-        { "number": 4, "direction": "D", "row": 0, "col": 3, "answer": "OPERA", "clue": "Stage works (down)", "length": 5 },
-        { "number": 5, "direction": "D", "row": 0, "col": 4, "answer": "ROTAS", "clue": "Wheels (down)", "length": 5 }
+        { "number": 1, "direction": "D", "row": 0, "col": 0, "answer": "RIB", "clue": "Protective chest bone", "length": 3 },
+        { "number": 2, "direction": "D", "row": 0, "col": 1, "answer": "REALM", "clue": "Domain; sphere", "length": 5 },
+        { "number": 3, "direction": "D", "row": 0, "col": 2, "answer": "STAGE", "clue": "Theater platform", "length": 5 },
+        { "number": 4, "direction": "D", "row": 0, "col": 3, "answer": "WRONG", "clue": "Not correct", "length": 5 },
+        { "number": 5, "direction": "D", "row": 2, "col": 4, "answer": "MAP", "clue": "Fold-out guide", "length": 3 }
+      ]
+    }
+  },
+  {
+    "id": "mini-002",
+    "title": "Beach Day",
+    "grid": ["SAND#", "SURF#", "WAVES", "#TANS", "SHORE"],
+    "clues": {
+      "across": [
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "SAND", "clue": "What gets between your toes", "length": 4 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "SURF", "clue": "Ride the breakers", "length": 4 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "WAVES", "clue": "Rolling ocean motions", "length": 5 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "TANS", "clue": "Sun-kissed complexions", "length": 4 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "SHORE", "clue": "Where land meets sea", "length": 5 }
+      ],
+      "down": [
+        { "number": 1, "direction": "D", "row": 0, "col": 0, "answer": "SWIM", "clue": "Move through water", "length": 4 },
+        { "number": 2, "direction": "D", "row": 0, "col": 1, "answer": "AQUA", "clue": "Blue-green hue", "length": 4 },
+        { "number": 3, "direction": "D", "row": 0, "col": 2, "answer": "REEF", "clue": "Coral formation", "length": 4 },
+        { "number": 4, "direction": "D", "row": 0, "col": 3, "answer": "TIDE", "clue": "It ebbs and flows", "length": 4 },
+        { "number": 5, "direction": "D", "row": 2, "col": 4, "answer": "SAND", "clue": "Beach stuff", "length": 4 }
+      ]
+    }
+  },
+  {
+    "id": "mini-003",
+    "title": "Coffee Shop",
+    "grid": ["BEAN#", "LATTE", "STEAM", "#MUGS", "SMELL"],
+    "clues": {
+      "across": [
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "BEAN", "clue": "Roasted coffee seed", "length": 4 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "LATTE", "clue": "Espresso with lots of milk", "length": 5 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "STEAM", "clue": "Cloud from a milk wand", "length": 5 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "MUGS", "clue": "Sturdy coffee cups", "length": 4 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "SMELL", "clue": "Fresh-brewed aroma", "length": 5 }
+      ],
+      "down": [
+        { "number": 1, "direction": "D", "row": 0, "col": 0, "answer": "BLEND", "clue": "Mix of beans", "length": 5 },
+        { "number": 2, "direction": "D", "row": 0, "col": 1, "answer": "LATIN", "clue": "Language of 'espresso' origin", "length": 5 },
+        { "number": 3, "direction": "D", "row": 0, "col": 2, "answer": "AROMA", "clue": "Pleasant smell", "length": 5 },
+        { "number": 4, "direction": "D", "row": 0, "col": 3, "answer": "CREAM", "clue": "Dairy add-in", "length": 5 }
+      ]
+    }
+  },
+  {
+    "id": "mini-004",
+    "title": "Garden Time",
+    "grid": ["SOIL#", "PLANT", "RAINS", "#HOSE", "GREEN"],
+    "clues": {
+      "across": [
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "SOIL", "clue": "What seeds go into", "length": 4 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "PLANT", "clue": "Set a seedling in place", "length": 5 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "RAINS", "clue": "Waters from the sky", "length": 5 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "HOSE", "clue": "Garden waterer", "length": 4 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "GREEN", "clue": "Color of healthy leaves", "length": 5 }
+      ],
+      "down": [
+        { "number": 1, "direction": "D", "row": 0, "col": 0, "answer": "SOW", "clue": "Plant seeds", "length": 3 },
+        { "number": 2, "direction": "D", "row": 0, "col": 1, "answer": "ORCHID", "clue": "Showy houseplant", "length": 6 },
+        { "number": 3, "direction": "D", "row": 0, "col": 2, "answer": "IVY", "clue": "Clinging vine", "length": 3 },
+        { "number": 4, "direction": "D", "row": 0, "col": 3, "answer": "LILAC", "clue": "Fragrant purple bloomer", "length": 5 }
+      ]
+    }
+  },
+  {
+    "id": "mini-005",
+    "title": "Quick Tech",
+    "grid": ["CLOUD", "LOGIN", "DEBUG", "#APPS", "FILES"],
+    "clues": {
+      "across": [
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "CLOUD", "clue": "Online storage space", "length": 5 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "LOGIN", "clue": "Enter username and password", "length": 5 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "DEBUG", "clue": "Fix code errors", "length": 5 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "APPS", "clue": "Phone programs", "length": 4 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "FILES", "clue": "Documents on a drive", "length": 5 }
+      ],
+      "down": [
+        { "number": 1, "direction": "D", "row": 0, "col": 0, "answer": "CACHE", "clue": "Hidden store of data", "length": 5 },
+        { "number": 2, "direction": "D", "row": 0, "col": 1, "answer": "ALERT", "clue": "Pop-up warning", "length": 5 },
+        { "number": 3, "direction": "D", "row": 0, "col": 2, "answer": "LOGIN", "clue": "Sign-in step", "length": 5 },
+        { "number": 4, "direction": "D", "row": 0, "col": 3, "answer": "DEBUG", "clue": "Hunt down bugs", "length": 5 }
+      ]
+    }
+  },
+  {
+    "id": "mini-006",
+    "title": "Trip Pack",
+    "grid": ["PLANE", "BOARD", "SUITS", "#MAPS", "HOTEL"],
+    "clues": {
+      "across": [
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "PLANE", "clue": "Jet for a long flight", "length": 5 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "BOARD", "clue": "Get on the aircraft", "length": 5 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "SUITS", "clue": "Business outfits", "length": 5 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "MAPS", "clue": "Street guides", "length": 4 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "HOTEL", "clue": "Night stay during travel", "length": 5 }
+      ],
+      "down": [
+        { "number": 1, "direction": "D", "row": 0, "col": 0, "answer": "PASS", "clue": "Boarding ___", "length": 4 },
+        { "number": 2, "direction": "D", "row": 0, "col": 1, "answer": "LUGGAGE", "clue": "Travel bags", "length": 7 },
+        { "number": 3, "direction": "D", "row": 0, "col": 2, "answer": "AISLE", "clue": "Seat row divider", "length": 5 },
+        { "number": 4, "direction": "D", "row": 2, "col": 4, "answer": "TAXI", "clue": "Ride from the airport", "length": 4 }
+      ]
+    }
+  },
+  {
+    "id": "mini-007",
+    "title": "Snack Time",
+    "grid": ["CHIP#", "SALSA", "NUTS#", "#DIPS", "SODAS"],
+    "clues": {
+      "across": [
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "CHIP", "clue": "Crispy potato piece", "length": 4 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "SALSA", "clue": "Tomato-onion party bowl", "length": 5 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "NUTS", "clue": "Almonds and cashews", "length": 4 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "DIPS", "clue": "Guac and queso, e.g.", "length": 4 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "SODAS", "clue": "Fizzy drinks", "length": 5 }
+      ],
+      "down": [
+        { "number": 1, "direction": "D", "row": 0, "col": 0, "answer": "CHEW", "clue": "Use your molars", "length": 4 },
+        { "number": 2, "direction": "D", "row": 0, "col": 1, "answer": "HOT", "clue": "Spicy", "length": 3 },
+        { "number": 3, "direction": "D", "row": 1, "col": 3, "answer": "SALTY", "clue": "Like pretzels", "length": 5 },
+        { "number": 4, "direction": "D", "row": 2, "col": 4, "answer": "STRAW", "clue": "Soda sipper", "length": 5 }
+      ]
+    }
+  },
+  {
+    "id": "mini-008",
+    "title": "Office Hour",
+    "grid": ["EMAIL", "NOTES", "MEETS", "#TASK", "FILES"],
+    "clues": {
+      "across": [
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "EMAIL", "clue": "Digital memo", "length": 5 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "NOTES", "clue": "Meeting scribbles", "length": 5 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "MEETS", "clue": "Calendared sessions", "length": 5 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "TASK", "clue": "Trello card item", "length": 4 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "FILES", "clue": "Folders’ contents", "length": 5 }
+      ],
+      "down": [
+        { "number": 1, "direction": "D", "row": 0, "col": 0, "answer": "EMAIL", "clue": "Gmail item", "length": 5 },
+        { "number": 2, "direction": "D", "row": 0, "col": 1, "answer": "MIN", "clue": "Short time unit (abbr.)", "length": 3 },
+        { "number": 3, "direction": "D", "row": 0, "col": 2, "answer": "IDEA", "clue": "Brainstorm spark", "length": 4 },
+        { "number": 4, "direction": "D", "row": 2, "col": 4, "answer": "SYNC", "clue": "Keep in step", "length": 4 }
+      ]
+    }
+  },
+  {
+    "id": "mini-009",
+    "title": "City Walk",
+    "grid": ["METRO", "AVENUE", "PARK#", "#CAFE", "NIGHT"],
+    "clues": {
+      "across": [
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "METRO", "clue": "Subway system", "length": 5 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "AVENUE", "clue": "Broad city street", "length": 6 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "PARK", "clue": "Green city retreat", "length": 4 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "CAFE", "clue": "Sidewalk espresso spot", "length": 4 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "NIGHT", "clue": "When the city lights up", "length": 5 }
+      ],
+      "down": [
+        { "number": 1, "direction": "D", "row": 0, "col": 0, "answer": "MAP", "clue": "Guide for tourists", "length": 3 },
+        { "number": 2, "direction": "D", "row": 0, "col": 1, "answer": "EATS", "clue": "Grub; nosh", "length": 4 },
+        { "number": 3, "direction": "D", "row": 0, "col": 2, "answer": "TRAIN", "clue": "Subway car", "length": 5 },
+        { "number": 4, "direction": "D", "row": 0, "col": 3, "answer": "ROUTE", "clue": "Way to go", "length": 5 }
+      ]
+    }
+  },
+  {
+    "id": "mini-010",
+    "title": "Game Night",
+    "grid": ["CARDS", "DICE#", "TOKENS", "#TEAM", "SCORE"],
+    "clues": {
+      "across": [
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "CARDS", "clue": "Poker staples", "length": 5 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "DICE", "clue": "Pair rolled in many games", "length": 4 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "TOKENS", "clue": "Board-game pieces", "length": 6 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "TEAM", "clue": "Co-op mode side", "length": 4 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "SCORE", "clue": "What the winner tallies", "length": 5 }
+      ],
+      "down": [
+        { "number": 1, "direction": "D", "row": 0, "col": 0, "answer": "CLUB", "clue": "Black suit symbol", "length": 4 },
+        { "number": 2, "direction": "D", "row": 0, "col": 1, "answer": "ACE", "clue": "High card", "length": 3 },
+        { "number": 3, "direction": "D", "row": 0, "col": 2, "answer": "RULE", "clue": "House ___", "length": 4 },
+        { "number": 4, "direction": "D", "row": 2, "col": 4, "answer": "TIMER", "clue": "Round limiter", "length": 5 }
+      ]
+    }
+  },
+  
+  {
+    "id": "mini-011",
+    "title": "Street Food",
+    "grid": ["CHAAT", "ROLL#", "TIKKA", "#MOMO", "STALL"],
+    "clues": {
+      "across": [
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "CHAAT", "clue": "Indian tangy snack", "length": 5 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "ROLL", "clue": "Kathi ____", "length": 4 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "TIKKA", "clue": "Paneer ___", "length": 5 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "MOMO", "clue": "Steamed dumpling", "length": 4 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "STALL", "clue": "Street vendor setup", "length": 5 }
+      ],
+      "down": [
+        { "number": 1, "direction": "D", "row": 0, "col": 0, "answer": "CRISP", "clue": "Snack texture", "length": 5 },
+        { "number": 2, "direction": "D", "row": 0, "col": 2, "answer": "ALOO", "clue": "Potato, in Hindi", "length": 4 },
+        { "number": 3, "direction": "D", "row": 0, "col": 3, "answer": "TONGS", "clue": "Grabbing utensil", "length": 5 }
+      ]
+    }
+  },
+  {
+    "id": "mini-012",
+    "title": "Train Travel",
+    "grid": ["TICKET", "SLEEP", "BERTH", "#ETD#", "TRACK"],
+    "clues": {
+      "across": [
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "TICKET", "clue": "Proof you paid the fare", "length": 6 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "SLEEP", "clue": "What you try to do on a night coach", "length": 5 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "BERTH", "clue": "Upper or lower, in a coach", "length": 5 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "ETD", "clue": "When the train leaves, briefly", "length": 3 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "TRACK", "clue": "Rails run on this", "length": 5 }
+      ],
+      "down": [
+        { "number": 1, "direction": "D", "row": 0, "col": 1, "answer": "IRCTC", "clue": "India’s railway booking portal", "length": 5 },
+        { "number": 2, "direction": "D", "row": 0, "col": 4, "answer": "SLEEPER", "clue": "Coach class with berths", "length": 7 },
+        { "number": 3, "direction": "D", "row": 2, "col": 2, "answer": "LATE", "clue": "Running behind schedule", "length": 4 }
+      ]
+    }
+  },
+  {
+    "id": "mini-013",
+    "title": "Cricket Quickie",
+    "grid": ["BATSM", "BOWLR", "UMPIRE", "#ODI#", "RUNSS"],
+    "clues": {
+      "across": [
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "BATSM", "clue": "Short for the striker at crease (abbr.)", "length": 5 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "BOWLR", "clue": "Deliverer of the ball (abbr.)", "length": 5 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "UMPIRE", "clue": "Decision maker in the middle", "length": 6 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "ODI", "clue": "50-over format", "length": 3 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "RUNSS", "clue": "What teams try to rack up", "length": 5 }
+      ],
+      "down": [
+        { "number": 1, "direction": "D", "row": 0, "col": 0, "answer": "BOUNDARY", "clue": "Four or six line", "length": 8 },
+        { "number": 2, "direction": "D", "row": 0, "col": 2, "answer": "LBW", "clue": "Leg-before call", "length": 3 },
+        { "number": 3, "direction": "D", "row": 1, "col": 4, "answer": "YORKER", "clue": "Toe-crushing delivery", "length": 6 }
+      ]
+    }
+  },
+  {
+    "id": "mini-014",
+    "title": "Coding Break",
+    "grid": ["ARRAY", "LOOPS", "DEBUG", "#TEST", "MERGE"],
+    "clues": {
+      "across": [
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "ARRAY", "clue": "Indexed collection", "length": 5 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "LOOPS", "clue": "for and while", "length": 5 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "DEBUG", "clue": "Chase down errors", "length": 5 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "TEST", "clue": "Write unit ___", "length": 4 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "MERGE", "clue": "Combine branches", "length": 5 }
+      ],
+      "down": [
+        { "number": 1, "direction": "D", "row": 0, "col": 1, "answer": "REPL", "clue": "Interactive shell (abbr.)", "length": 4 },
+        { "number": 2, "direction": "D", "row": 0, "col": 3, "answer": "YAML", "clue": "Config format", "length": 4 },
+        { "number": 3, "direction": "D", "row": 1, "col": 2, "answer": "API", "clue": "Interface for services", "length": 3 }
+      ]
+    }
+  },
+  {
+    "id": "mini-015",
+    "title": "Bollywood Buzz",
+    "grid": ["SONG#", "HERO#", "DRAMA", "#ITEM", "SCENE"],
+    "clues": {
+      "across": [
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "SONG", "clue": "What people hum after a film", "length": 4 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "HERO", "clue": "Lead actor", "length": 4 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "DRAMA", "clue": "Genre full of emotions", "length": 5 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "ITEM", "clue": "___ number (dance)", "length": 4 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "SCENE", "clue": "Shot segment", "length": 5 }
+      ],
+      "down": [
+        { "number": 1, "direction": "D", "row": 0, "col": 2, "answer": "OST", "clue": "Film album, briefly", "length": 3 },
+        { "number": 2, "direction": "D", "row": 0, "col": 3, "answer": "NGO", "clue": "Charity org., often in plots", "length": 3 },
+        { "number": 3, "direction": "D", "row": 1, "col": 4, "answer": "CAMEO", "clue": "Tiny role by a star", "length": 5 }
+      ]
+    }
+  },
+  {
+    "id": "mini-016",
+    "title": "Breakfast Redux",
+    "grid": ["TOAST", "EGGS#", "BACON", "#TEA#", "JUICE"],
+    "clues": {
+      "across": [
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "TOAST", "clue": "Browned bread", "length": 5 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "EGGS", "clue": "Scrambled or poached", "length": 4 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "BACON", "clue": "Salty breakfast strip", "length": 5 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "TEA", "clue": "Masala ___", "length": 3 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "JUICE", "clue": "Orange or apple", "length": 5 }
+      ],
+      "down": [
+        { "number": 1, "direction": "D", "row": 0, "col": 1, "answer": "OATS", "clue": "Porridge grain", "length": 4 },
+        { "number": 2, "direction": "D", "row": 0, "col": 2, "answer": "AVOCADO", "clue": "Toast topper", "length": 7 },
+        { "number": 3, "direction": "D", "row": 2, "col": 4, "answer": "MUG", "clue": "Cup without a saucer", "length": 3 }
+      ]
+    }
+  },
+  {
+    "id": "mini-017",
+    "title": "Space Peek",
+    "grid": ["EARTH", "ORBIT", "COMET", "#MOON", "NIGHT"],
+    "clues": {
+      "across": [
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "EARTH", "clue": "Our home planet", "length": 5 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "ORBIT", "clue": "Path around a star", "length": 5 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "COMET", "clue": "Icy traveler with a tail", "length": 5 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "MOON", "clue": "Crescent in the sky", "length": 4 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "NIGHT", "clue": "When stars show", "length": 5 }
+      ],
+      "down": [
+        { "number": 1, "direction": "D", "row": 0, "col": 0, "answer": "EON", "clue": "Very long time", "length": 3 },
+        { "number": 2, "direction": "D", "row": 0, "col": 3, "answer": "RING", "clue": "Saturn feature", "length": 4 },
+        { "number": 3, "direction": "D", "row": 1, "col": 4, "answer": "TELESCOPE", "clue": "Tool to see far", "length": 9 }
+      ]
+    }
+  },
+  {
+    "id": "mini-018",
+    "title": "Monsoon Mood",
+    "grid": ["CLOUD", "DRIZZ", "RAIN#", "#WET#", "UMBRE"],
+    "clues": {
+      "across": [
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "CLOUD", "clue": "Grey sky patch", "length": 5 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "DRIZZ", "clue": "Light rain (abbr. style)", "length": 5 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "RAIN", "clue": "It pours in June–Sept.", "length": 4 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "WET", "clue": "Not dry", "length": 3 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "UMBRE", "clue": "Start of an umbrella word", "length": 5 }
+      ],
+      "down": [
+        { "number": 1, "direction": "D", "row": 0, "col": 2, "answer": "OZONE", "clue": "Layer in the sky", "length": 5 },
+        { "number": 2, "direction": "D", "row": 1, "col": 4, "answer": "ZIP", "clue": "Zero, informally", "length": 3 },
+        { "number": 3, "direction": "D", "row": 2, "col": 1, "answer": "AQUA", "clue": "Blue-green shade", "length": 4 }
+      ]
+    }
+  },
+  {
+    "id": "mini-019",
+    "title": "Dessert Dash",
+    "grid": ["CAKES", "GULAB", "JAMUN", "#FROZ", "TREAT"],
+    "clues": {
+      "across": [
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "CAKES", "clue": "Birthday specials", "length": 5 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "GULAB", "clue": "_____ jamun", "length": 5 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "JAMUN", "clue": "Syrupy sweet", "length": 5 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "FROZ", "clue": "Short for iced-solid", "length": 4 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "TREAT", "clue": "Little reward", "length": 5 }
+      ],
+      "down": [
+        { "number": 1, "direction": "D", "row": 0, "col": 0, "answer": "COCOA", "clue": "Hot chocolate source", "length": 5 },
+        { "number": 2, "direction": "D", "row": 0, "col": 3, "answer": "SUGAR", "clue": "Sweetener", "length": 5 },
+        { "number": 3, "direction": "D", "row": 2, "col": 4, "answer": "NUT", "clue": "Cashew or almond", "length": 3 }
+      ]
+    }
+  },
+  {
+    "id": "mini-020",
+    "title": "Campus Life",
+    "grid": ["CLASS", "QUIZ#", "NOTES", "#HOST", "EVENT"],
+    "clues": {
+      "across": [
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "CLASS", "clue": "Lecture session", "length": 5 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "QUIZ", "clue": "Short test", "length": 4 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "NOTES", "clue": "What you scribble", "length": 5 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "HOST", "clue": "Club ___", "length": 4 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "EVENT", "clue": "Campus happening", "length": 5 }
+      ],
+      "down": [
+        { "number": 1, "direction": "D", "row": 0, "col": 1, "answer": "LAB", "clue": "Experiment room", "length": 3 },
+        { "number": 2, "direction": "D", "row": 0, "col": 2, "answer": "ASSIGN", "clue": "Give homework", "length": 6 },
+        { "number": 3, "direction": "D", "row": 2, "col": 4, "answer": "SOCIETY", "clue": "Student group", "length": 7 }
+      ]
+    }
+  },
+  {
+    "id": "mini-021",
+    "title": "Weekend Drive",
+    "grid": ["RADIO", "MUSIC", "SCENI", "#REST", "PICNIC"],
+    "clues": {
+      "across": [
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "RADIO", "clue": "FM companion", "length": 5 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "MUSIC", "clue": "Playlist content", "length": 5 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "SCENI", "clue": "Like a pretty route (abbr. vibe)", "length": 5 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "REST", "clue": "Leg break", "length": 4 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "PICNIC", "clue": "Lunch outdoors", "length": 6 }
+      ],
+      "down": [
+        { "number": 1, "direction": "D", "row": 1, "col": 4, "answer": "ICER", "clue": "Road hazard in winter", "length": 4 },
+        { "number": 2, "direction": "D", "row": 0, "col": 0, "answer": "RPM", "clue": "Engine measure, abbr.", "length": 3 },
+        { "number": 3, "direction": "D", "row": 0, "col": 3, "answer": "ION", "clue": "Charged particle", "length": 3 }
+      ]
+    }
+  },
+  {
+    "id": "mini-022",
+    "title": "Festival Lights",
+    "grid": ["DIYAS", "RANGI", "LADOO", "#AART", "SMILE"],
+    "clues": {
+      "across": [
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "DIYAS", "clue": "Oil lamps at Diwali", "length": 5 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "RANGI", "clue": "Colorful, as a design (short/slang)", "length": 5 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "LADOO", "clue": "Round sweet", "length": 5 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "AART", "clue": "Ceremonial prayer (short form vibe)", "length": 4 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "SMILE", "clue": "What photos capture", "length": 5 }
+      ],
+      "down": [
+        { "number": 1, "direction": "D", "row": 2, "col": 4, "answer": "OIL", "clue": "Fuel for a diya", "length": 3 },
+        { "number": 2, "direction": "D", "row": 0, "col": 1, "answer": "IDOL", "clue": "Deity statue", "length": 4 },
+        { "number": 3, "direction": "D", "row": 1, "col": 3, "answer": "GARLAND", "clue": "Floral loop", "length": 7 }
+      ]
+    }
+  },
+  {
+    "id": "mini-023",
+    "title": "Gym Sprint",
+    "grid": ["SQUAT", "PUSH#", "PLANK", "#REST", "STRET"],
+    "clues": {
+      "across": [
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "SQUAT", "clue": "Leg day move", "length": 5 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "PUSH", "clue": "___-ups", "length": 4 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "PLANK", "clue": "Core hold", "length": 5 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "REST", "clue": "Take a breather", "length": 4 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "STRET", "clue": "Short for limbering up", "length": 5 }
+      ],
+      "down": [
+        { "number": 1, "direction": "D", "row": 2, "col": 4, "answer": "KNEE", "clue": "Joint to protect", "length": 4 },
+        { "number": 2, "direction": "D", "row": 0, "col": 2, "answer": "QUAD", "clue": "Front thigh muscle", "length": 4 },
+        { "number": 3, "direction": "D", "row": 1, "col": 4, "answer": "HIIT", "clue": "Fast-paced workout, abbr.", "length": 4 }
+      ]
+    }
+  },
+  {
+    "id": "mini-024",
+    "title": "Book Nook",
+    "grid": ["NOVEL", "GENRE", "INDEX", "#POEM", "PROSE"],
+    "clues": {
+      "across": [
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "NOVEL", "clue": "Long story in chapters", "length": 5 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "GENRE", "clue": "Fiction type", "length": 5 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "INDEX", "clue": "Back-of-book guide", "length": 5 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "POEM", "clue": "Verse piece", "length": 4 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "PROSE", "clue": "Normal writing", "length": 5 }
+      ],
+      "down": [
+        { "number": 1, "direction": "D", "row": 0, "col": 1, "answer": "OPUS", "clue": "Major work", "length": 4 },
+        { "number": 2, "direction": "D", "row": 0, "col": 3, "answer": "LEXIS", "clue": "Vocabulary", "length": 5 },
+        { "number": 3, "direction": "D", "row": 1, "col": 4, "answer": "EREADER", "clue": "Kindle, for one", "length": 7 }
+      ]
+    }
+  },
+  {
+    "id": "mini-025",
+    "title": "Pet Parade",
+    "grid": ["DOGGO", "MEOW#", "LEASH", "#BONE", "TREAT"],
+    "clues": {
+      "across": [
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "DOGGO", "clue": "Slang for canine", "length": 5 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "MEOW", "clue": "Cat’s call", "length": 4 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "LEASH", "clue": "Walk strap", "length": 5 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "BONE", "clue": "Chew toy, often", "length": 4 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "TREAT", "clue": "Reward for sit/stay", "length": 5 }
+      ],
+      "down": [
+        { "number": 1, "direction": "D", "row": 0, "col": 2, "answer": "GROOM", "clue": "Brush and bathe", "length": 5 },
+        { "number": 2, "direction": "D", "row": 2, "col": 4, "answer": "HASH", "clue": "Chopped mixture", "length": 4 },
+        { "number": 3, "direction": "D", "row": 1, "col": 3, "answer": "WOOF", "clue": "Dog’s bark", "length": 4 }
+      ]
+    }
+  },
+  {
+    "id": "mini-026",
+    "title": "Music Mix",
+    "grid": ["RAGAS", "ALBUM", "TRACK", "#BPM#", "LYRIC"],
+    "clues": {
+      "across": [
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "RAGAS", "clue": "Indian classical modes", "length": 5 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "ALBUM", "clue": "Collection of songs", "length": 5 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "TRACK", "clue": "Single song", "length": 5 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "BPM", "clue": "Tempo stat", "length": 3 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "LYRIC", "clue": "Words to a tune", "length": 5 }
+      ],
+      "down": [
+        { "number": 1, "direction": "D", "row": 2, "col": 4, "answer": "KPOP", "clue": "Seoul sound", "length": 4 },
+        { "number": 2, "direction": "D", "row": 0, "col": 1, "answer": "ARIA", "clue": "Opera solo", "length": 4 },
+        { "number": 3, "direction": "D", "row": 1, "col": 3, "answer": "BAND", "clue": "Group on stage", "length": 4 }
+      ]
+    }
+  },
+  {
+    "id": "mini-027",
+    "title": "Kitchen Bits",
+    "grid": ["STOVE", "OVENS", "SPICE", "#LADL", "PLATE"],
+    "clues": {
+      "across": [
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "STOVE", "clue": "Cooktop", "length": 5 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "OVENS", "clue": "Bakers’ boxes", "length": 5 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "SPICE", "clue": "Masala, broadly", "length": 5 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "LADL", "clue": "Short for soup spoon", "length": 4 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "PLATE", "clue": "Dinnerware circle", "length": 5 }
+      ],
+      "down": [
+        { "number": 1, "direction": "D", "row": 0, "col": 2, "answer": "TONG", "clue": "Gripper in the kitchen", "length": 4 },
+        { "number": 2, "direction": "D", "row": 1, "col": 4, "answer": "SS", "clue": "Stainless, briefly", "length": 2 },
+        { "number": 3, "direction": "D", "row": 2, "col": 1, "answer": "PIN", "clue": "Rolling ___", "length": 3 }
+      ]
+    }
+  },
+  {
+    "id": "mini-028",
+    "title": "Mountains",
+    "grid": ["ALPS#", "EVERE", "REST#", "#YAK#", "LODGE"],
+    "clues": {
+      "across": [
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "ALPS", "clue": "European range", "length": 4 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "EVERE", "clue": "Start of the highest peak’s name", "length": 5 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "REST", "clue": "Take a break", "length": 4 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "YAK", "clue": "Beast of burden", "length": 3 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "LODGE", "clue": "Mountain inn", "length": 5 }
+      ],
+      "down": [
+        { "number": 1, "direction": "D", "row": 0, "col": 1, "answer": "LAVA", "clue": "Volcanic flow", "length": 4 },
+        { "number": 2, "direction": "D", "row": 2, "col": 4, "answer": "SKI", "clue": "Glide downhill", "length": 3 },
+        { "number": 3, "direction": "D", "row": 1, "col": 3, "answer": "ICE", "clue": "Frozen water", "length": 3 }
+      ]
+    }
+  },
+  {
+    "id": "mini-029",
+    "title": "Tea Time",
+    "grid": ["CHAIS", "KETTL", "SUGAR", "#MUG#", "BISCU"],
+    "clues": {
+      "across": [
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "CHAIS", "clue": "Masala ___ (plural vibe)", "length": 5 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "KETTL", "clue": "Boiler, briefly", "length": 5 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "SUGAR", "clue": "Two spoons, maybe", "length": 5 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "MUG", "clue": "Thick cup", "length": 3 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "BISCU", "clue": "Start of dunkable snack", "length": 5 }
+      ],
+      "down": [
+        { "number": 1, "direction": "D", "row": 0, "col": 4, "answer": "SS", "clue": "Sugar substitute (very briefly)", "length": 2 },
+        { "number": 2, "direction": "D", "row": 1, "col": 2, "answer": "TEA", "clue": "Chai, in English", "length": 3 },
+        { "number": 3, "direction": "D", "row": 2, "col": 1, "answer": "SIP", "clue": "Small drink", "length": 3 }
+      ]
+    }
+  },
+  {
+    "id": "mini-030",
+    "title": "Startup Sprint",
+    "grid": ["IDEAS", "MVP##", "PIVOT", "#DEMO", "SCALE"],
+    "clues": {
+      "across": [
+        { "number": 1, "direction": "A", "row": 0, "col": 0, "answer": "IDEAS", "clue": "Sparks on a whiteboard", "length": 5 },
+        { "number": 2, "direction": "A", "row": 1, "col": 0, "answer": "MVP", "clue": "First scrappy version", "length": 3 },
+        { "number": 3, "direction": "A", "row": 2, "col": 0, "answer": "PIVOT", "clue": "Change strategy fast", "length": 5 },
+        { "number": 4, "direction": "A", "row": 3, "col": 1, "answer": "DEMO", "clue": "Short product show", "length": 4 },
+        { "number": 5, "direction": "A", "row": 4, "col": 0, "answer": "SCALE", "clue": "Grow to millions", "length": 5 }
+      ],
+      "down": [
+        { "number": 1, "direction": "D", "row": 0, "col": 2, "answer": "DEBT", "clue": "What startups avoid if bootstrapped", "length": 4 },
+        { "number": 2, "direction": "D", "row": 0, "col": 3, "answer": "ASK", "clue": "Fundraiser’s request", "length": 3 },
+        { "number": 3, "direction": "D", "row": 2, "col": 4, "answer": "TAM", "clue": "Market size, briefly", "length": 3 }
       ]
     }
   }
+
 ]
