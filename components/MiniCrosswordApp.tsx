@@ -50,11 +50,13 @@ function hashDateToIndex(dateStr: string, modulo: number): number {
 }
 
 function todayKey() {
-    const d = new Date();
-    const yyyy = d.getFullYear();
-    const mm = pad(d.getMonth() + 1);
-    const dd = pad(d.getDate());
-    return `${yyyy}-${mm}-${dd}`; // local date
+    // Compute today's date in IST (UTC+5:30) so everyone gets the same daily puzzle
+    const nowUtcMs = Date.now();
+    const ist = new Date(nowUtcMs + 5.5 * 60 * 60 * 1000);
+    const yyyy = ist.getUTCFullYear();
+    const mm = pad(ist.getUTCMonth() + 1);
+    const dd = pad(ist.getUTCDate());
+    return `${yyyy}-${mm}-${dd}`;
 }
 
 // The component validates fill using the grid letters only; clue metadata is used for numbering and UI.
@@ -132,12 +134,10 @@ export default function MiniCrosswordApp() {
         };
     }, []);
 
-    // Pick a deterministic daily puzzle if available; otherwise random fallback
+    // Pick a deterministic daily puzzle (same for all users each day in IST)
     useEffect(() => {
         if (!puzzles || puzzles.length === 0) return;
-        // Random selection request: use time-seeded but stable per-page-load selection
-        // If you want daily determinism, switch to hashDateToIndex(dateKey, puzzles.length)
-        const idx = Math.floor(Math.random() * puzzles.length);
+        const idx = hashDateToIndex(dateKey, puzzles.length);
         setPuzzle(puzzles[idx]);
     }, [puzzles]);
 
