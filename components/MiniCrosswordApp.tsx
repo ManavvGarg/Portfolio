@@ -112,7 +112,7 @@ export default function MiniCrosswordApp() {
         let cancelled = false;
         (async () => {
             try {
-                const res = await fetch("/crosswords.json", {
+                const res = await fetch("/api/crosswords", {
                     cache: "no-store",
                 });
                 if (!res.ok) {
