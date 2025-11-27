@@ -4,6 +4,7 @@ import Link from "next/link";
 export default function ResumePage() {
   // Calculate total experience
   const experiences = [
+    { start: new Date(2025, 10), end: new Date() }, // October 2025-Present
     { start: new Date(2025, 5), end: new Date() }, // June 2025-Present
     { start: new Date(2025, 0), end: new Date(2025, 5) }, // Jan-June 2025
     { start: new Date(2024, 4), end: new Date(2024, 7) }, // May-Aug 2024
@@ -32,9 +33,9 @@ export default function ResumePage() {
 
       <div className="text-xs md:text-sm">
         <p className="mb-6">
-          You can view and download my full resume{" "}
+          You can view and download my full resume directly from github{" "}
           <Link
-            href="/Resume_Manav_Garg.pdf"
+            href="https://github.com/ManavvGarg/Resume/blob/d1b35ff085a0ff84d194037f09f8ec77cb37798d/Resume_Manav_Garg.pdf"
             target="_blank"
             className="underline"
           >
@@ -72,6 +73,49 @@ export default function ResumePage() {
               <span className="font-normal text-sm">{experienceSummary}</span>
             </h3>
             <div className="space-y-4">
+              <div>
+                <h4 className="font-medium">
+                  <u>
+                    <b>Vault22 (Current)</b>
+                  </u>
+                </h4>
+                <p>
+                  <span className="text-blue-800 dark:text-blue-400 font-medium">
+                    Independent Consultant - Machine Learning & AI
+                  </span>{" "}
+                  • October-Present 2025
+                </p>
+                <p>
+                  • Worked on tariff digitization initiatives. <br />{" "}
+                  • Led comprehensive data mining, preparation, and cleansing
+                  processes.<br />{" "}
+                  • Developed and trained custom model architectures, including
+                  but not limited to YOLO, Donut, and Custom Encoder-Decoder
+                  Models, as well as using RAG + LLM based pipelines.<br />
+                  • Reduced data processing time from 24-36 hours to 4-5 hours
+                  using preprocessing and postprocessing techniques and finely
+                  constructed datasets.<br />
+                  • Implemented robust backend APIs and deployment engines
+                  enabling scalable production deployment of machine learning
+                  solutions.<br />
+                  • Introduced asynchronous processing to help APIs scale in
+                  production environments and handle large traffic volumes,
+                  drastically reducing downtime risk.<br />
+                  • Led cost-optimization initiatives that reduced overall
+                  infrastructure and pipeline operating costs by 20–25% through
+                  workload restructuring and resource-efficient
+                  automation.<br />
+                  • Optimized and deployed AWS services for scalable self-hosted
+                  model deployments and improved compute efficiency.<br />
+                  • Performed extensive data cleaning, resolved ETL workflow
+                  issues, and restructured data lakes to ensure reliability,
+                  consistency, and accessibility.<br />
+                  • Built analytics workflows and metric dashboards using Amazon
+                  QuickSight, enabling data-driven decision-making for business
+                  teams and investors.
+                </p>
+              </div>
+
               <div>
                 <h4 className="font-medium">
                   <u>
