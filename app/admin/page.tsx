@@ -9,7 +9,7 @@ const ibmPlexMono = IBM_Plex_Mono({
   display: "swap",
 });
 
-type Tab = "sidebar" | "about" | "resume" | "projects" | "crosswords";
+type Tab = "sidebar" | "about" | "resume" | "projects";
 
 export default function AdminPage() {
   const [password, setPassword] = useState("");
@@ -18,23 +18,15 @@ export default function AdminPage() {
   const [activeTab, setActiveTab] = useState<Tab>("sidebar");
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [data, setData] = useState<any>(null);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [crosswords, setCrosswords] = useState<any[]>([]);
   const [saving, setSaving] = useState(false);
   const [saveMsg, setSaveMsg] = useState("");
 
   const fetchData = useCallback(async (pwd: string) => {
-    const [portfolioRes, crosswordsRes] = await Promise.all([
-      fetch("/api/admin/portfolio", {
-        headers: { "x-admin-password": pwd },
-      }),
-      fetch("/api/admin/crosswords", {
-        headers: { "x-admin-password": pwd },
-      }),
-    ]);
-    if (!portfolioRes.ok) throw new Error("Unauthorized");
-    setData(await portfolioRes.json());
-    if (crosswordsRes.ok) setCrosswords(await crosswordsRes.json());
+    const res = await fetch("/api/admin/portfolio", {
+      headers: { "x-admin-password": pwd },
+    });
+    if (!res.ok) throw new Error("Unauthorized");
+    setData(await res.json());
   }, []);
 
   const handleLogin = async () => {
@@ -51,26 +43,16 @@ export default function AdminPage() {
     setSaving(true);
     setSaveMsg("");
     try {
-      const [r1, r2] = await Promise.all([
-        fetch("/api/admin/portfolio", {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            "x-admin-password": password,
-          },
-          body: JSON.stringify(data),
-        }),
-        fetch("/api/admin/crosswords", {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            "x-admin-password": password,
-          },
-          body: JSON.stringify(crosswords),
-        }),
-      ]);
-      if (!r1.ok || !r2.ok) {
-        const err = !r1.ok ? await r1.json() : await r2.json();
+      const res = await fetch("/api/admin/portfolio", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "x-admin-password": password,
+        },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) {
+        const err = await res.json();
         throw new Error(err.error || "Save failed");
       }
       setSaveMsg("Saved successfully!");
@@ -127,7 +109,7 @@ export default function AdminPage() {
 
   if (!data) return <div className="p-8">Loading...</div>;
 
-  const tabs: Tab[] = ["sidebar", "about", "resume", "projects", "crosswords"];
+  const tabs: Tab[] = ["sidebar", "about", "resume", "projects"];
 
   return (
     <div className={`min-h-screen ${ibmPlexMono.className}`}>
@@ -173,11 +155,8 @@ export default function AdminPage() {
       <div className="p-4 max-w-4xl mx-auto">
         {activeTab === "sidebar" && <SidebarEditor data={data} update={update} />}
         {activeTab === "about" && <AboutEditor data={data} update={update} />}
-        {activeTab === "resume" && <ResumeEditor data={data} update={update} />}
+        {activeTab === "resume" && <ResumeEditor data={data} update={update} password={password} />}
         {activeTab === "projects" && <ProjectsEditor data={data} update={update} />}
-        {activeTab === "crosswords" && (
-          <CrosswordsEditor crosswords={crosswords} setCrosswords={setCrosswords} />
-        )}
       </div>
     </div>
   );
@@ -443,13 +422,65 @@ function AboutEditor({ data, update }: { data: any; update: (path: string, value
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function ResumeEditor({ data, update }: { data: any; update: (path: string, value: any) => void }) {
+function ResumeEditor({ data, update, password }: { data: any; update: (path: string, value: any) => void; password: string }) {
   const r = data.resume;
+  const [uploading, setUploading] = useState(false);
+  const [uploadMsg, setUploadMsg] = useState("");
+
+  const handleResumeUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    setUploadMsg("");
+    try {
+      const formData = new FormData();
+      formData.append("resume", file);
+      const res = await fetch("/api/admin/resume", {
+        method: "PUT",
+        headers: { "x-admin-password": password },
+        body: formData,
+      });
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error || "Upload failed");
+      }
+      const result = await res.json();
+      update("resume.resumeLink", result.path);
+      setUploadMsg("Resume uploaded successfully!");
+    } catch (err) {
+      setUploadMsg(err instanceof Error ? err.message : "Upload failed");
+    }
+    setUploading(false);
+    setTimeout(() => setUploadMsg(""), 3000);
+  };
+
   return (
     <div>
       <h2 className="text-base font-bold mb-4">Resume</h2>
+
+      {/* Upload */}
+      <div className="mb-4 border border-black dark:border-white p-3">
+        <label className="text-xs font-bold block mb-2">Upload New Resume PDF</label>
+        <input
+          type="file"
+          accept=".pdf"
+          onChange={handleResumeUpload}
+          disabled={uploading}
+          className="text-xs font-mono"
+        />
+        {uploading && <p className="text-xs mt-1">Uploading...</p>}
+        {uploadMsg && (
+          <p className={`text-xs mt-1 ${uploadMsg.includes("success") ? "text-green-600" : "text-red-500"}`}>
+            {uploadMsg}
+          </p>
+        )}
+        <p className="text-xs mt-2 text-gray-500">
+          Current: <a href={r.resumeLink} target="_blank" className="underline">{r.resumeLink}</a>
+        </p>
+      </div>
+
       <Field
-        label="Resume PDF Link"
+        label="Resume PDF Link (auto-updated on upload)"
         value={r.resumeLink}
         onChange={(v) => update("resume.resumeLink", v)}
       />
@@ -788,79 +819,3 @@ function ProjectsEditor({ data, update }: { data: any; update: (path: string, va
   );
 }
 
-function CrosswordsEditor({
-  crosswords,
-  setCrosswords,
-}: {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  crosswords: any[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  setCrosswords: (v: any[]) => void;
-}) {
-  const [expandedIdx, setExpandedIdx] = useState<number | null>(null);
-
-  return (
-    <div>
-      <h2 className="text-base font-bold mb-4">
-        Crosswords ({crosswords.length} puzzles)
-      </h2>
-      <p className="text-xs mb-4 text-gray-600 dark:text-gray-400">
-        Edit crossword data as JSON. For complex edits, expand a puzzle below.
-      </p>
-      {crosswords.map((cw, i) => (
-        <div key={i} className="border border-black dark:border-white mb-2">
-          <button
-            onClick={() => setExpandedIdx(expandedIdx === i ? null : i)}
-            className="w-full text-left p-2 text-xs font-bold flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-900"
-          >
-            <span>
-              {cw.id} — {cw.title}
-            </span>
-            <span>{expandedIdx === i ? "▲" : "▼"}</span>
-          </button>
-          {expandedIdx === i && (
-            <div className="p-2 border-t border-black dark:border-white">
-              <textarea
-                value={JSON.stringify(cw, null, 2)}
-                onChange={(e) => {
-                  try {
-                    const parsed = JSON.parse(e.target.value);
-                    const copy = [...crosswords];
-                    copy[i] = parsed;
-                    setCrosswords(copy);
-                  } catch {
-                    // Invalid JSON, don't update
-                  }
-                }}
-                rows={20}
-                className="w-full border border-black dark:border-white p-2 bg-transparent text-xs font-mono"
-              />
-              <button
-                onClick={() => setCrosswords(crosswords.filter((_, j) => j !== i))}
-                className="border border-red-500 text-red-500 px-3 py-1 text-xs mt-2 hover:bg-red-500 hover:text-white"
-              >
-                Delete Puzzle
-              </button>
-            </div>
-          )}
-        </div>
-      ))}
-      <button
-        onClick={() =>
-          setCrosswords([
-            ...crosswords,
-            {
-              id: `mini-${String(crosswords.length + 1).padStart(3, "0")}`,
-              title: "New Puzzle",
-              grid: ["#####", "#####", "#####", "#####", "#####"],
-              clues: { across: [], down: [] },
-            },
-          ])
-        }
-        className="border border-black dark:border-white px-3 py-1 text-xs mt-2 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
-      >
-        + Add Puzzle
-      </button>
-    </div>
-  );
-}
