@@ -230,7 +230,7 @@ export default function PortfolioClient({ data }: { data: any }) {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="hidden md:flex md:border md:border-black dark:md:border-white flex justify-center">
                     <Image
-                      src={`https://github-readme-stats.vercel.app/api?username=${s.githubUsername}&show_icons=false&theme=swift&hide_title=true&include_all_commits=true&card_width=300&show=reviews,prs_merged,prs_merged_percentage`}
+                      src={`https://gh-rdme-stats.vercel.app/api?username=${s.githubUsername}&show_icons=false&theme=swift&hide_title=true&include_all_commits=true&card_width=300&show=reviews,prs_merged,prs_merged_percentage`}
                       alt="GitHub Stats"
                       width={300}
                       height={110}
@@ -239,7 +239,7 @@ export default function PortfolioClient({ data }: { data: any }) {
                   </div>
                   <div className="block md:hidden flex justify-center">
                     <Image
-                      src={`https://github-readme-stats.vercel.app/api?username=${s.githubUsername}&show_icons=false&theme=swift&hide_title=true&include_all_commits=true&card_width=300&show=reviews,prs_merged,prs_merged_percentage`}
+                      src={`https://gh-rdme-stats.vercel.app/api?username=${s.githubUsername}&show_icons=false&theme=swift&hide_title=true&include_all_commits=true&card_width=300&show=reviews,prs_merged,prs_merged_percentage`}
                       alt="GitHub Stats"
                       width={300}
                       height={101}
@@ -248,7 +248,7 @@ export default function PortfolioClient({ data }: { data: any }) {
                   </div>
                   <div className="hidden md:flex md:border md:border-black dark:md:border-white flex justify-center">
                     <Image
-                      src={`https://github-readme-stats.vercel.app/api/top-langs/?username=${s.githubUsername}&hide=lua&theme=swift&layout=compact&card_width=303`}
+                      src={`https://gh-rdme-stats.vercel.app/api/top-langs/?username=${s.githubUsername}&hide=lua&theme=swift&layout=compact&card_width=303`}
                       alt="Most Used Languages"
                       width={300}
                       height={110}
@@ -257,7 +257,7 @@ export default function PortfolioClient({ data }: { data: any }) {
                   </div>
                   <div className="block md:hidden flex justify-center">
                     <Image
-                      src={`https://github-readme-stats.vercel.app/api/top-langs/?username=${s.githubUsername}&hide=lua&theme=swift&layout=compact&card_width=303`}
+                      src={`https://gh-rdme-stats.vercel.app/api/top-langs/?username=${s.githubUsername}&hide=lua&theme=swift&layout=compact&card_width=303`}
                       alt="Most Used Languages"
                       width={300}
                       height={110}
