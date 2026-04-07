@@ -69,10 +69,13 @@ export default function AdminPage() {
           body: JSON.stringify(crosswords),
         }),
       ]);
-      if (!r1.ok || !r2.ok) throw new Error("Save failed");
+      if (!r1.ok || !r2.ok) {
+        const err = !r1.ok ? await r1.json() : await r2.json();
+        throw new Error(err.error || "Save failed");
+      }
       setSaveMsg("Saved successfully!");
-    } catch {
-      setSaveMsg("Failed to save");
+    } catch (e) {
+      setSaveMsg(e instanceof Error ? e.message : "Failed to save");
     }
     setSaving(false);
     setTimeout(() => setSaveMsg(""), 3000);
