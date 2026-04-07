@@ -206,7 +206,7 @@
     ]
   },
   "projects": {
-    "baseUrl": "https://github-readme-stats.vercel.app/api/pin/?username=manavvgarg&repo=",
+    "baseUrl": "https://gh-rdme-stats.vercel.app/api/pin/?username=manavvgarg&repo=",
     "categories": {
       "Machine Learning": [
         "LuminSkin",
