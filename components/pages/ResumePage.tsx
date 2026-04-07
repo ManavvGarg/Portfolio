@@ -1,21 +1,47 @@
 import React from "react";
 import Link from "next/link";
 
-export default function ResumePage() {
-  // Calculate total experience
-  const experiences = [
-    { start: new Date(2025, 10), end: new Date() }, // October 2025-Present
-    { start: new Date(2025, 5), end: new Date() }, // June 2025-Present
-    { start: new Date(2025, 0), end: new Date(2025, 5) }, // Jan-June 2025
-    { start: new Date(2024, 4), end: new Date(2024, 7) }, // May-Aug 2024
-    { start: new Date(2024, 4), end: new Date(2024, 5) }, // May-Jun 2024
-    { start: new Date(2023, 7), end: new Date(2023, 9) }, // Aug-Oct 2023
-    { start: new Date(2023, 7), end: new Date(2023, 10) }, // Aug-Nov 2023
-  ];
+interface Education {
+  institution: string;
+  degree: string;
+  period: string;
+  specialization: string;
+  cgpa: string;
+  cgpaMax: string;
+  currentSemester: string;
+}
 
-  const totalMonths = experiences.reduce((total, exp) => {
-    const months = (exp.end.getFullYear() - exp.start.getFullYear()) * 12 +
-      (exp.end.getMonth() - exp.start.getMonth() + 1);
+interface Experience {
+  company: string;
+  current: boolean;
+  roles: { title: string; period: string }[];
+  startDate: string;
+  endDate: string | null;
+  bullets: string[];
+}
+
+interface Coursework {
+  category: string;
+  items: string;
+}
+
+interface ResumeData {
+  resumeLink: string;
+  education: Education[];
+  experience: Experience[];
+  skills: string[];
+  domains: string[];
+  coursework: Coursework[];
+}
+
+export default function ResumePage({ data }: { data: ResumeData }) {
+  // Calculate total experience from startDate/endDate
+  const totalMonths = data.experience.reduce((total, exp) => {
+    const [startY, startM] = exp.startDate.split("-").map(Number);
+    const end = exp.endDate
+      ? exp.endDate.split("-").map(Number)
+      : [new Date().getFullYear(), new Date().getMonth() + 1];
+    const months = (end[0] - startY) * 12 + (end[1] - startM + 1);
     return total + months;
   }, 0);
 
@@ -35,35 +61,40 @@ export default function ResumePage() {
         <p className="mb-6">
           You can view and download my full resume directly from github{" "}
           <Link
-            href="https://github.com/ManavvGarg/Resume/blob/d1b35ff085a0ff84d194037f09f8ec77cb37798d/Resume_Manav_Garg.pdf"
+            href={data.resumeLink}
             target="_blank"
             className="underline"
           >
             here
-          </Link>.
+          </Link>
+          .
         </p>
 
         <div className="space-y-4">
-          <h1 className="font-medium text-xl">
-            Summarized Resume Below ▼
-          </h1>
+          <h1 className="font-medium text-xl">Summarized Resume Below ▼</h1>
+
           <section>
             <h3 className="font-bold text-base mb-2">Education</h3>
             <div className="space-y-4">
-              <div>
-                <h4 className="font-medium">
-                  <u>
-                    <b>Vellore Institute of Technology, Chennai</b>
-                  </u>
-                </h4>
-                <p>B.Tech, Computer Science Engineering • 2020–2025</p>
-                <p>
-                  Specialization in AI/ML • Current CGPA:{" "}
-                  <span className="text-red-500 dark:text-red-400">
-                    8.51
-                  </span>/10 • Current Semester: 8th
-                </p>
-              </div>
+              {data.education.map((edu, i) => (
+                <div key={i}>
+                  <h4 className="font-medium">
+                    <u>
+                      <b>{edu.institution}</b>
+                    </u>
+                  </h4>
+                  <p>
+                    {edu.degree} • {edu.period}
+                  </p>
+                  <p>
+                    Specialization in {edu.specialization} • Current CGPA:{" "}
+                    <span className="text-red-500 dark:text-red-400">
+                      {edu.cgpa}
+                    </span>
+                    /{edu.cgpaMax} • Current Semester: {edu.currentSemester}
+                  </p>
+                </div>
+              ))}
             </div>
           </section>
 
@@ -73,215 +104,64 @@ export default function ResumePage() {
               <span className="font-normal text-sm">{experienceSummary}</span>
             </h3>
             <div className="space-y-4">
-              <div>
-                <h4 className="font-medium">
-                  <u>
-                    <b>Vault22 (Current)</b>
-                  </u>
-                </h4>
-                <p>
-                  <span className="text-blue-800 dark:text-blue-400 font-medium">
-                    Independent Consultant - Machine Learning & AI
-                  </span>{" "}
-                  • October-Present 2025
-                </p>
-                <p>
-                  • Worked on tariff digitization initiatives. <br />{" "}
-                  • Led comprehensive data mining, preparation, and cleansing
-                  processes.<br />{" "}
-                  • Developed and trained custom model architectures, including
-                  but not limited to YOLO, Donut, and Custom Encoder-Decoder
-                  Models, as well as using RAG + LLM based pipelines.<br />
-                  • Reduced data processing time from 24-36 hours to 4-5 hours
-                  using preprocessing and postprocessing techniques and finely
-                  constructed datasets.<br />
-                  • Implemented robust backend APIs and deployment engines
-                  enabling scalable production deployment of machine learning
-                  solutions.<br />
-                  • Introduced asynchronous processing to help APIs scale in
-                  production environments and handle large traffic volumes,
-                  drastically reducing downtime risk.<br />
-                  • Led cost-optimization initiatives that reduced overall
-                  infrastructure and pipeline operating costs by 20–25% through
-                  workload restructuring and resource-efficient
-                  automation.<br />
-                  • Optimized and deployed AWS services for scalable self-hosted
-                  model deployments and improved compute efficiency.<br />
-                  • Performed extensive data cleaning, resolved ETL workflow
-                  issues, and restructured data lakes to ensure reliability,
-                  consistency, and accessibility.<br />
-                  • Built analytics workflows and metric dashboards using Amazon
-                  QuickSight, enabling data-driven decision-making for business
-                  teams and investors.
-                </p>
-              </div>
-
-              <div>
-                <h4 className="font-medium">
-                  <u>
-                    <b>IHX Pvt. Ltd. - A Perfios Company (Current)</b>
-                  </u>
-                </h4>
-                <p>
-                  <span className="text-blue-800 dark:text-blue-400 font-medium">
-                    Associate Data Scientist
-                  </span>{" "}
-                  • June-Present 2025
-                </p>
-                <p>
-                  <span className="text-blue-800 dark:text-blue-400 font-medium">
-                    Data Scientist and Machine Learning, Intern
-                  </span>{" "}
-                  • Jan–June 2025
-                </p>
-                <p>
-                  • Worked on tariff digitization initiatives. <br />{" "}
-                  • Led comprehensive data mining, preparation, and cleansing
-                  processes.{" "}
-                  <br />• Developed and trained custom model architectures,
-                  including but not limited to YOLO, Donut, and Custom
-                  Encoder-Decoder Models, as well as using RAG + LLM based
-                  pipelines.<br />• Reduced data processing time from 24-36
-                  hours to 4-5 hours using pre processing and post processing
-                  techniques and finely constructed datasets.<br />• Implemented
-                  robust backend APIs and deployment engines enabling scalable
-                  production deployment of machine learning solutions.<br />•
-                  Introduced asynchronous processing to help APIs scale in
-                  production environment and to handle & withstand huge amount
-                  of traffic to drastically reduce the risk of downtime.
-                </p>
-              </div>
-
-              <div>
-                <h4 className="font-medium">
-                  <u>
-                    <b>Intel Corporation</b>
-                  </u>
-                </h4>
-                <p>
-                  <span className="text-blue-800 dark:text-blue-400 font-medium">
-                    Industrial Trainee
-                  </span>{" "}
-                  • May–Aug 2024
-                </p>
-                <p>
-                  Worked on Business Contract Validation using ML for clause
-                  classification and deviation detection.
-                </p>
-              </div>
-              <div>
-                <h4 className="font-medium">
-                  <u>
-                    <b>Tisac Pvt. Ltd.</b>
-                  </u>
-                </h4>
-                <p>
-                  <span className="text-blue-800 dark:text-blue-400 font-medium">
-                    Intern, Full Stack Developer & ML Engineer
-                  </span>{" "}
-                  • May–Jun 2024
-                </p>
-                <p>
-                  Developed LLM training platform using Docker, Firebase, and
-                  Jupyter environments.
-                </p>
-              </div>
-              <div>
-                <h4 className="font-medium">
-                  <u>
-                    <b>StudioX (Coca-Cola × Hogarth India)</b>
-                  </u>
-                </h4>
-                <p>
-                  <span className="text-blue-800 dark:text-blue-400 font-medium">
-                    Intern, Full Stack Developer
-                  </span>{" "}
-                  • Aug–Oct 2023
-                </p>
-                <p>
-                  Built web apps for ICC World Cup 2023 campaign (voting &
-                  polling system).
-                </p>
-              </div>
-              <div>
-                <h4 className="font-medium">
-                  <u>
-                    <b>Wipro</b>
-                  </u>
-                </h4>
-                <p>
-                  <span className="text-blue-800 dark:text-blue-400 font-medium">
-                    Intern, Android Developer & ML
-                  </span>{" "}
-                  • Aug–Nov 2023
-                </p>
-                <p>
-                  Built Android app for machine vision-based object detection
-                  and logging.
-                </p>
-              </div>
+              {data.experience.map((exp, i) => (
+                <div key={i}>
+                  <h4 className="font-medium">
+                    <u>
+                      <b>
+                        {exp.company}
+                        {exp.current ? " (Current)" : ""}
+                      </b>
+                    </u>
+                  </h4>
+                  {exp.roles.map((role, ri) => (
+                    <p key={ri}>
+                      <span className="text-blue-800 dark:text-blue-400 font-medium">
+                        {role.title}
+                      </span>{" "}
+                      • {role.period}
+                    </p>
+                  ))}
+                  <p>
+                    {exp.bullets.map((bullet, bi) => (
+                      <span key={bi}>
+                        • {bullet}
+                        {bi < exp.bullets.length - 1 && <br />}
+                      </span>
+                    ))}
+                  </p>
+                </div>
+              ))}
             </div>
           </section>
 
           <section>
             <h3 className="font-bold text-base mb-2">Skills</h3>
             <div className="space-y-1">
-              <p>
-                Python • JavaScript • C++ • Java • Dart • SQL • Bash • HTML5 •
-                CSS3
-              </p>
-              <p>
-                React • Next.js • Node.js • Express • Django • Flask • FastAPI •
-                WordPress
-              </p>
-              <p>TensorFlow • PyTorch • Scikit-learn • EmoRoBERTa • OpenCV</p>
-              <p>
-                Pandas • NumPy • Matplotlib • Jupyter • Docker • Firebase •
-                MongoDB • Git
-              </p>
+              {data.skills.map((row, i) => (
+                <p key={i}>{row}</p>
+              ))}
             </div>
           </section>
 
           <section>
             <h3 className="font-bold text-base mb-2">Domains & Techniques</h3>
             <div className="space-y-1">
-              <p>
-                Machine Learning • Deep Learning • Natural Language Processing
-              </p>
-              <p>Computer Vision • Data Science • Data Analysis</p>
-              <p>LLM Training & Fine-Tuning • ML-Ops • DevOps</p>
-              <p>
-                Full Stack Development • Android Development • Secure
-                Authentication
-              </p>
+              {data.domains.map((row, i) => (
+                <p key={i}>{row}</p>
+              ))}
             </div>
           </section>
 
           <section>
             <h3 className="font-bold text-base mb-2">Relevant Coursework</h3>
             <div className="space-y-2">
-              <div>
-                <p className="font-medium underline">
-                  Computer Science Foundations
-                </p>
-                <p className="text-xs">
-                  Data Structures & Algorithms • Object-Oriented Programming
-                </p>
-              </div>
-              <div>
-                <p className="font-medium underline">
-                  Artificial Intelligence
-                </p>
-                <p className="text-xs">
-                  Artificial Intelligence • Machine Learning • Explainable AI
-                </p>
-              </div>
-              <div>
-                <p className="font-medium underline">Mathematics</p>
-                <p className="text-xs">
-                  Linear Algebra • Calculus • Probability & Statistics
-                </p>
-              </div>
+              {data.coursework.map((cw, i) => (
+                <div key={i}>
+                  <p className="font-medium underline">{cw.category}</p>
+                  <p className="text-xs">{cw.items}</p>
+                </div>
+              ))}
             </div>
           </section>
         </div>

@@ -1,0 +1,241 @@
+{
+  "sidebar": {
+    "name": "Manav Garg",
+    "titles": [
+      "Aspiring Machine Learning Engineer",
+      "Data Science Enthusiast",
+      "Research-Oriented Developer"
+    ],
+    "bio": "Motivated by curiosity and driven by data —\nI combine code, creativity, and critical\nthinking to build intelligent systems and\nexplore the frontier of AI.",
+    "quote": {
+      "text": "Errors using inadequate data are much less\nthan those using no data at all",
+      "author": "Charles Babbage"
+    },
+    "location": "India (Bangalore Urban)",
+    "company": {
+      "name": "IHX Pvt. Ltd. - A Perfios Company",
+      "url": "https://www.linkedin.com/company/ihx-india/"
+    },
+    "social": {
+      "github": {
+        "url": "https://github.com/ManavvGarg/",
+        "label": "gh/manavvgarg"
+      },
+      "linkedin": {
+        "url": "https://www.linkedin.com/in/manavvgarg/",
+        "label": "in/manavvgarg"
+      },
+      "designInstagram": {
+        "url": "https://www.instagram.com/11mnv.design/",
+        "label": "@11mnv.design (Instagram)"
+      }
+    },
+    "currentlyReading": "The Laws of Human Nature - Robert Greene",
+    "githubUsername": "manavvgarg",
+    "profileImage": "/profile_picture_manav_garg.jpeg"
+  },
+  "about": {
+    "paragraphs": [
+      "Manav is a 21-year-old Software Developer and Machine Learning Engineer with expertise in graphic design and UI/UX. He possesses proficiency in multiple programming languages and technologies, including Python, Java, JavaScript, C/C++, TensorFlow, PyTorch, Scikit-Learn, Django, React, and Figma.",
+      "His technical competencies extend to natural language processing, computer vision, data mining, and big data analytics. Manav demonstrates exceptional motivation and results-oriented work ethics, consistently exhibiting a collaborative mindset and an insatiable appetite for knowledge acquisition."
+    ],
+    "achievements": [
+      "Secured a global rank within the top 3,000 in the all-India VIT entrance examination",
+      "Developed strong communication and presentation skills complemented by an analytical mindset",
+      "Established expertise in Data Structures, Algorithms, and Modern ML techniques",
+      "Mastered full-stack development capabilities with end-to-end API integration",
+      "Demonstrated proficiency in Python ML libraries including TensorFlow and OpenCV",
+      "Cultivated professional skills in UI/UX design using Figma, Adobe Photoshop, and Illustrator"
+    ],
+    "professionalInterests": [
+      "Manav is deeply fascinated by the potential of data-driven technologies to address real-world challenges and facilitate intelligent decision-making through automation and insight.",
+      "He aspires to contribute to research-oriented projects, with particular emphasis on practical ML applications, model interpretability, and responsible AI implementation.",
+      "Currently exploring domains such as natural language processing, computer vision, and reinforcement learning, while simultaneously strengthening his foundation in statistics, algorithms, and data analysis.",
+      "His professional objective is to develop into a comprehensive machine learning engineer and data scientist, equipped with the technical capabilities to work on both production-grade systems and experimental prototypes."
+    ],
+    "beyondTechnology": "Manav is also a self-taught designer, enthusiastic gamer, casual culinary enthusiast, and visual thinker — he firmly believes that creative expression complements and enhances analytical thinking in technology environments."
+  },
+  "resume": {
+    "resumeLink": "https://github.com/ManavvGarg/Resume/blob/d1b35ff085a0ff84d194037f09f8ec77cb37798d/Resume_Manav_Garg.pdf",
+    "education": [
+      {
+        "institution": "Vellore Institute of Technology, Chennai",
+        "degree": "B.Tech, Computer Science Engineering",
+        "period": "2020–2025",
+        "specialization": "AI/ML",
+        "cgpa": "8.51",
+        "cgpaMax": "10",
+        "currentSemester": "8th"
+      }
+    ],
+    "experience": [
+      {
+        "company": "Vault22",
+        "current": true,
+        "roles": [
+          {
+            "title": "Independent Consultant - Machine Learning & AI",
+            "period": "October-Present 2025"
+          }
+        ],
+        "startDate": "2025-10",
+        "endDate": null,
+        "bullets": [
+          "Worked on tariff digitization initiatives.",
+          "Led comprehensive data mining, preparation, and cleansing processes.",
+          "Developed and trained custom model architectures, including but not limited to YOLO, Donut, and Custom Encoder-Decoder Models, as well as using RAG + LLM based pipelines.",
+          "Reduced data processing time from 24-36 hours to 4-5 hours using preprocessing and postprocessing techniques and finely constructed datasets.",
+          "Implemented robust backend APIs and deployment engines enabling scalable production deployment of machine learning solutions.",
+          "Introduced asynchronous processing to help APIs scale in production environments and handle large traffic volumes, drastically reducing downtime risk.",
+          "Led cost-optimization initiatives that reduced overall infrastructure and pipeline operating costs by 20–25% through workload restructuring and resource-efficient automation.",
+          "Optimized and deployed AWS services for scalable self-hosted model deployments and improved compute efficiency.",
+          "Performed extensive data cleaning, resolved ETL workflow issues, and restructured data lakes to ensure reliability, consistency, and accessibility.",
+          "Built analytics workflows and metric dashboards using Amazon QuickSight, enabling data-driven decision-making for business teams and investors."
+        ]
+      },
+      {
+        "company": "IHX Pvt. Ltd. - A Perfios Company",
+        "current": true,
+        "roles": [
+          {
+            "title": "Associate Data Scientist",
+            "period": "June-Present 2025"
+          },
+          {
+            "title": "Data Scientist and Machine Learning, Intern",
+            "period": "Jan–June 2025"
+          }
+        ],
+        "startDate": "2025-01",
+        "endDate": null,
+        "bullets": [
+          "Worked on tariff digitization initiatives.",
+          "Led comprehensive data mining, preparation, and cleansing processes.",
+          "Developed and trained custom model architectures, including but not limited to YOLO, Donut, and Custom Encoder-Decoder Models, as well as using RAG + LLM based pipelines.",
+          "Reduced data processing time from 24-36 hours to 4-5 hours using pre processing and post processing techniques and finely constructed datasets.",
+          "Implemented robust backend APIs and deployment engines enabling scalable production deployment of machine learning solutions.",
+          "Introduced asynchronous processing to help APIs scale in production environment and to handle & withstand huge amount of traffic to drastically reduce the risk of downtime."
+        ]
+      },
+      {
+        "company": "Intel Corporation",
+        "current": false,
+        "roles": [
+          {
+            "title": "Industrial Trainee",
+            "period": "May–Aug 2024"
+          }
+        ],
+        "startDate": "2024-05",
+        "endDate": "2024-08",
+        "bullets": [
+          "Worked on Business Contract Validation using ML for clause classification and deviation detection."
+        ]
+      },
+      {
+        "company": "Tisac Pvt. Ltd.",
+        "current": false,
+        "roles": [
+          {
+            "title": "Intern, Full Stack Developer & ML Engineer",
+            "period": "May–Jun 2024"
+          }
+        ],
+        "startDate": "2024-05",
+        "endDate": "2024-06",
+        "bullets": [
+          "Developed LLM training platform using Docker, Firebase, and Jupyter environments."
+        ]
+      },
+      {
+        "company": "StudioX (Coca-Cola × Hogarth India)",
+        "current": false,
+        "roles": [
+          {
+            "title": "Intern, Full Stack Developer",
+            "period": "Aug–Oct 2023"
+          }
+        ],
+        "startDate": "2023-08",
+        "endDate": "2023-10",
+        "bullets": [
+          "Built web apps for ICC World Cup 2023 campaign (voting & polling system)."
+        ]
+      },
+      {
+        "company": "Wipro",
+        "current": false,
+        "roles": [
+          {
+            "title": "Intern, Android Developer & ML",
+            "period": "Aug–Nov 2023"
+          }
+        ],
+        "startDate": "2023-08",
+        "endDate": "2023-11",
+        "bullets": [
+          "Built Android app for machine vision-based object detection and logging."
+        ]
+      }
+    ],
+    "skills": [
+      "Python • JavaScript • C++ • Java • Dart • SQL • Bash • HTML5 • CSS3",
+      "React • Next.js • Node.js • Express • Django • Flask • FastAPI • WordPress",
+      "TensorFlow • PyTorch • Scikit-learn • EmoRoBERTa • OpenCV",
+      "Pandas • NumPy • Matplotlib • Jupyter • Docker • Firebase • MongoDB • Git"
+    ],
+    "domains": [
+      "Machine Learning • Deep Learning • Natural Language Processing",
+      "Computer Vision • Data Science • Data Analysis",
+      "LLM Training & Fine-Tuning • ML-Ops • DevOps",
+      "Full Stack Development • Android Development • Secure Authentication"
+    ],
+    "coursework": [
+      {
+        "category": "Computer Science Foundations",
+        "items": "Data Structures & Algorithms • Object-Oriented Programming"
+      },
+      {
+        "category": "Artificial Intelligence",
+        "items": "Artificial Intelligence • Machine Learning • Explainable AI"
+      },
+      {
+        "category": "Mathematics",
+        "items": "Linear Algebra • Calculus • Probability & Statistics"
+      }
+    ]
+  },
+  "projects": {
+    "baseUrl": "https://github-readme-stats.vercel.app/api/pin/?username=manavvgarg&repo=",
+    "categories": {
+      "Machine Learning": [
+        "LuminSkin",
+        "STIA_VIT",
+        "AutoDoc",
+        "Business-Contract-Validation-Intel-Unnati",
+        "SentiSYS",
+        "TokenizerCompare"
+      ],
+      "Fullstack": [
+        "Certi-gen",
+        "nschr",
+        "Rekol"
+      ],
+      "Machine Learning + Fullstack": [
+        "KeyKeg"
+      ],
+      "Frontend/Personal Projects": [
+        "Portfolio"
+      ],
+      "App Development": [
+        "fpa-wipro"
+      ],
+      "Desktop Development": [
+        "FontSync"
+      ],
+      "Bots": [
+        "Lavalink-Music-Bot"
+      ]
+    }
+  }
+}
