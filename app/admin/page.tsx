@@ -9,7 +9,7 @@ const ibmPlexMono = IBM_Plex_Mono({
   display: "swap",
 });
 
-type Tab = "sidebar" | "about" | "resume" | "projects";
+type Tab = "sidebar" | "about" | "resume" | "projects" | "blog";
 
 export default function AdminPage() {
   const [password, setPassword] = useState("");
@@ -109,7 +109,7 @@ export default function AdminPage() {
 
   if (!data) return <div className="p-8">Loading...</div>;
 
-  const tabs: Tab[] = ["sidebar", "about", "resume", "projects"];
+  const tabs: Tab[] = ["sidebar", "about", "resume", "projects", "blog"];
 
   return (
     <div className={`min-h-screen ${ibmPlexMono.className}`}>
@@ -157,6 +157,7 @@ export default function AdminPage() {
         {activeTab === "about" && <AboutEditor data={data} update={update} />}
         {activeTab === "resume" && <ResumeEditor data={data} update={update} password={password} />}
         {activeTab === "projects" && <ProjectsEditor data={data} update={update} />}
+        {activeTab === "blog" && <BlogEditor password={password} />}
       </div>
     </div>
   );
@@ -900,6 +901,431 @@ function ProjectsEditor({ data, update }: { data: any; update: (path: string, va
           + Add Category
         </button>
       </div>
+    </div>
+  );
+}
+
+// Blog editor — self-contained, manages its own data/save lifecycle
+interface BlogMedia {
+  name: string;
+  path: string;
+  size: number;
+}
+
+function BlogEditor({ password }: { password: string }) {
+  const [posts, setPosts] = useState<string[]>([]);
+  const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
+  const [isNew, setIsNew] = useState(false);
+
+  // Form fields
+  const [slug, setSlug] = useState("");
+  const [title, setTitle] = useState("");
+  const [date, setDate] = useState("");
+  const [description, setDescription] = useState("");
+  const [tags, setTags] = useState("");
+  const [content, setContent] = useState("");
+
+  // Media
+  const [media, setMedia] = useState<BlogMedia[]>([]);
+  const [uploading, setUploading] = useState(false);
+  const [uploadMsg, setUploadMsg] = useState("");
+
+  // Status
+  const [loading, setLoading] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [saveMsg, setSaveMsg] = useState("");
+
+  const headers = { "x-admin-password": password };
+
+  const fetchPosts = useCallback(async () => {
+    try {
+      const res = await fetch("/api/admin/blog", { headers });
+      if (res.ok) setPosts(await res.json());
+    } catch {
+      /* ignore */
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [password]);
+
+  useEffect(() => {
+    fetchPosts();
+  }, [fetchPosts]);
+
+  const clearForm = () => {
+    setSlug("");
+    setTitle("");
+    setDate("");
+    setDescription("");
+    setTags("");
+    setContent("");
+    setMedia([]);
+    setSelectedSlug(null);
+    setIsNew(false);
+    setSaveMsg("");
+    setUploadMsg("");
+  };
+
+  const handleNew = () => {
+    clearForm();
+    setIsNew(true);
+    setDate(new Date().toISOString().split("T")[0]);
+  };
+
+  const handleSelect = async (s: string) => {
+    setLoading(true);
+    setSaveMsg("");
+    setUploadMsg("");
+    try {
+      const res = await fetch(`/api/admin/blog?slug=${encodeURIComponent(s)}`, {
+        headers,
+      });
+      if (!res.ok) throw new Error("Failed to load post");
+      const post = await res.json();
+      setSelectedSlug(s);
+      setIsNew(false);
+      setSlug(s);
+      setTitle(post.title);
+      setDate(post.date);
+      setDescription(post.description);
+      setTags((post.tags || []).join(", "));
+      setContent(post.content);
+
+      // Fetch media for this post
+      const mediaRes = await fetch(
+        `/api/admin/blog/media?slug=${encodeURIComponent(s)}`,
+        { headers }
+      );
+      if (mediaRes.ok) setMedia(await mediaRes.json());
+      else setMedia([]);
+    } catch (err) {
+      setSaveMsg(err instanceof Error ? err.message : "Failed to load");
+    }
+    setLoading(false);
+  };
+
+  const handlePublish = async () => {
+    const targetSlug = isNew ? slug.trim() : selectedSlug;
+    if (!targetSlug) {
+      setSaveMsg("Slug is required");
+      return;
+    }
+    if (!title.trim()) {
+      setSaveMsg("Title is required");
+      return;
+    }
+
+    setSaving(true);
+    setSaveMsg("");
+    try {
+      const tagsArray = tags
+        .split(",")
+        .map((t) => t.trim())
+        .filter(Boolean);
+      const res = await fetch("/api/admin/blog", {
+        method: "PUT",
+        headers: { ...headers, "Content-Type": "application/json" },
+        body: JSON.stringify({
+          slug: targetSlug,
+          title: title.trim(),
+          date,
+          description: description.trim(),
+          tags: tagsArray,
+          content,
+        }),
+      });
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error || "Publish failed");
+      }
+      setSaveMsg("Published successfully!");
+      setSelectedSlug(targetSlug);
+      setIsNew(false);
+      fetchPosts();
+    } catch (err) {
+      setSaveMsg(err instanceof Error ? err.message : "Publish failed");
+    }
+    setSaving(false);
+    setTimeout(() => setSaveMsg(""), 4000);
+  };
+
+  const handleDelete = async (s: string) => {
+    if (!confirm(`Delete post "${s}"? This cannot be undone.`)) return;
+    try {
+      const res = await fetch("/api/admin/blog", {
+        method: "DELETE",
+        headers: { ...headers, "Content-Type": "application/json" },
+        body: JSON.stringify({ slug: s }),
+      });
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error || "Delete failed");
+      }
+      if (selectedSlug === s) clearForm();
+      fetchPosts();
+    } catch (err) {
+      setSaveMsg(err instanceof Error ? err.message : "Delete failed");
+    }
+  };
+
+  const handleMediaUpload = async (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const file = e.target.files?.[0];
+    const targetSlug = isNew ? slug.trim() : selectedSlug;
+    if (!file || !targetSlug) {
+      setUploadMsg("Save the post first (need a slug for media folder)");
+      return;
+    }
+    setUploading(true);
+    setUploadMsg("");
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("slug", targetSlug);
+      const res = await fetch("/api/admin/blog/media", {
+        method: "PUT",
+        headers,
+        body: formData,
+      });
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error || "Upload failed");
+      }
+      const result = await res.json();
+      setMedia((prev) => [
+        ...prev,
+        { name: result.name, path: result.path, size: 0 },
+      ]);
+      setUploadMsg("Uploaded!");
+    } catch (err) {
+      setUploadMsg(err instanceof Error ? err.message : "Upload failed");
+    }
+    setUploading(false);
+    e.target.value = "";
+    setTimeout(() => setUploadMsg(""), 3000);
+  };
+
+  const slugify = (text: string) =>
+    text
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "");
+
+  const isEditing = selectedSlug !== null || isNew;
+
+  return (
+    <div>
+      <h2 className="text-base font-bold mb-4">Blog Posts</h2>
+
+      {/* Post List */}
+      <div className="mb-4">
+        {posts.length === 0 && !isNew && (
+          <p className="text-xs text-gray-500 mb-2">No posts yet.</p>
+        )}
+        {posts.map((s) => (
+          <div
+            key={s}
+            className={`flex items-center justify-between border border-black dark:border-white p-2 mb-1 text-xs ${
+              selectedSlug === s
+                ? "bg-black text-white dark:bg-white dark:text-black"
+                : ""
+            }`}
+          >
+            <button
+              onClick={() => handleSelect(s)}
+              className="font-mono hover:underline text-left flex-1"
+            >
+              {s}
+            </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handleDelete(s);
+              }}
+              className={`ml-2 px-2 py-0.5 text-xs border ${
+                selectedSlug === s
+                  ? "border-red-300 text-red-300 hover:bg-red-500 hover:text-white"
+                  : "border-red-500 text-red-500 hover:bg-red-500 hover:text-white"
+              }`}
+            >
+              Delete
+            </button>
+          </div>
+        ))}
+        <button
+          onClick={handleNew}
+          className="border border-black dark:border-white px-3 py-1 text-xs mt-1 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+        >
+          + New Post
+        </button>
+      </div>
+
+      {/* Editor */}
+      {isEditing && (
+        <div className="border border-black dark:border-white p-4">
+          {loading ? (
+            <p className="text-xs">Loading...</p>
+          ) : (
+            <>
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-sm font-bold">
+                  {isNew ? "New Post" : `Editing: ${selectedSlug}`}
+                </h3>
+                <div className="flex items-center gap-2">
+                  {saveMsg && (
+                    <span
+                      className={`text-xs ${saveMsg.includes("success") ? "text-green-600" : "text-red-500"}`}
+                    >
+                      {saveMsg}
+                    </span>
+                  )}
+                  <button
+                    onClick={handlePublish}
+                    disabled={saving}
+                    className="border border-black dark:border-white px-4 py-1 text-xs font-bold hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black disabled:opacity-50"
+                  >
+                    {saving ? "Publishing..." : "Publish"}
+                  </button>
+                  <button
+                    onClick={clearForm}
+                    className="border border-black dark:border-white px-3 py-1 text-xs hover:bg-gray-100 dark:hover:bg-gray-900"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+
+              {/* Slug */}
+              {isNew && (
+                <div className="mb-3">
+                  <label className="text-xs font-bold block mb-1">Slug</label>
+                  <div className="flex gap-2">
+                    <input
+                      value={slug}
+                      onChange={(e) => setSlug(e.target.value)}
+                      placeholder="my-post-slug"
+                      className="flex-1 border border-black dark:border-white p-2 bg-transparent text-xs font-mono"
+                    />
+                    <button
+                      onClick={() => setSlug(slugify(title))}
+                      className="border border-black dark:border-white px-2 py-1 text-xs hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black whitespace-nowrap"
+                    >
+                      From title
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* Frontmatter fields */}
+              <Field
+                label="Title"
+                value={title}
+                onChange={setTitle}
+              />
+              <div className="grid grid-cols-2 gap-3">
+                <Field label="Date" value={date} onChange={setDate} />
+                <Field
+                  label="Tags (comma-separated)"
+                  value={tags}
+                  onChange={setTags}
+                />
+              </div>
+              <Field
+                label="Description"
+                value={description}
+                onChange={setDescription}
+                multiline
+                rows={2}
+              />
+
+              {/* Markdown Content */}
+              <div className="mb-4">
+                <label className="text-xs font-bold block mb-1">
+                  Content (Markdown)
+                </label>
+                <textarea
+                  value={content}
+                  onChange={(e) => setContent(e.target.value)}
+                  rows={20}
+                  className="w-full border border-black dark:border-white p-2 bg-transparent text-xs font-mono leading-relaxed"
+                  placeholder="Write your blog post in Markdown..."
+                />
+              </div>
+
+              {/* Media Upload */}
+              <div className="border border-black dark:border-white p-3 mb-4">
+                <label className="text-xs font-bold block mb-2">
+                  Media Files
+                </label>
+                <div className="mb-2">
+                  <input
+                    type="file"
+                    accept="image/*,video/*"
+                    onChange={handleMediaUpload}
+                    disabled={uploading || (!slug.trim() && !selectedSlug)}
+                    className="text-xs font-mono"
+                  />
+                  {uploading && (
+                    <span className="text-xs ml-2">Uploading...</span>
+                  )}
+                  {uploadMsg && (
+                    <span
+                      className={`text-xs ml-2 ${uploadMsg === "Uploaded!" ? "text-green-600" : "text-red-500"}`}
+                    >
+                      {uploadMsg}
+                    </span>
+                  )}
+                </div>
+                <p className="text-[10px] text-gray-500 mb-2">
+                  Files are stored in public/blog/{slug || selectedSlug || "<slug>"}/.
+                  Use the markdown snippets below to embed them.
+                </p>
+                {media.length > 0 && (
+                  <div className="space-y-1">
+                    {media.map((m) => (
+                      <div
+                        key={m.name}
+                        className="flex items-center gap-2 text-xs font-mono bg-gray-50 dark:bg-gray-900 p-1.5"
+                      >
+                        <span className="flex-1 truncate">{m.name}</span>
+                        <code
+                          className="text-[10px] cursor-pointer hover:underline border border-black dark:border-white px-1.5 py-0.5 shrink-0"
+                          title="Click to copy"
+                          onClick={() => {
+                            navigator.clipboard.writeText(
+                              `![${m.name}](${m.path})`
+                            );
+                          }}
+                        >
+                          Copy ![...]
+                        </code>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Bottom publish */}
+              <div className="flex items-center justify-end gap-2">
+                {saveMsg && (
+                  <span
+                    className={`text-xs ${saveMsg.includes("success") ? "text-green-600" : "text-red-500"}`}
+                  >
+                    {saveMsg}
+                  </span>
+                )}
+                <button
+                  onClick={handlePublish}
+                  disabled={saving}
+                  className="border border-black dark:border-white px-6 py-1.5 text-xs font-bold hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black disabled:opacity-50"
+                >
+                  {saving ? "Publishing..." : "Publish"}
+                </button>
+              </div>
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 }

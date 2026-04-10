@@ -12,6 +12,7 @@ import {
   MapPin,
 } from "lucide-react";
 import { useState } from "react";
+import Link from "next/link";
 
 import HomePage from "@/components/pages/HomePage";
 import ProjectsPage from "@/components/pages/ProjectsPage";
@@ -65,6 +66,12 @@ export default function PortfolioClient({ data }: { data: any }) {
               {p}
             </button>
           ))}
+          <Link
+            href="/blog"
+            className="uppercase hover:underline whitespace-nowrap"
+          >
+            blog
+          </Link>
           <div className="ml-1 md:ml-2 flex items-center">
             <ThemeToggle />
           </div>
