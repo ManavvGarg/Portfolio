@@ -1,4 +1,4 @@
-`import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 const REPO = "manavvgarg/portfolio";
 const FILE_PATH = "public/profile_picture_manav_garg.jpeg";
