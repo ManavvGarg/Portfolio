@@ -5,9 +5,12 @@ description: "First post on my new blog — a quick intro to what I'll be writin
 tags: ["intro", "personal"]
 ---
 
+
 # Hello World
 
 Welcome to my blog. This is where I'll be sharing thoughts on machine learning, software engineering, and everything in between.
+
+![1663c956-69ed-474f-ac86-68ec62b3b8f3.jpeg](/blog/hello-world/1663c956-69ed-474f-ac86-68ec62b3b8f3.jpeg)
 
 ## Why a blog?
 
@@ -18,17 +21,5 @@ I've always believed that writing is thinking. Putting ideas into words forces c
 - **Technical deep-dives** into ML models, training pipelines, and deployment strategies
 - **Project breakdowns** where I walk through things I've built and lessons learned
 - **Opinions** on tools, frameworks, and the state of the industry
-
-## Media in posts
-
-Images and videos go in `public/blog/<slug>/` and are referenced like this:
-
-```md
-![description](/blog/hello-world/screenshot.png)
-
-![demo video](/blog/hello-world/demo.mp4)
-```
-
-Images are automatically optimized with `next/image`. Video files (`.mp4`, `.webm`, `.mov`) are rendered as native `<video>` players.
 
 Stay tuned for more.
