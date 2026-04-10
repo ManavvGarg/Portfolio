@@ -235,6 +235,9 @@
       ],
       "Bots": [
         "Lavalink-Music-Bot"
+      ],
+      "Generative AI": [
+        "Snippy"
       ]
     }
   }
