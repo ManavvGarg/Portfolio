@@ -216,13 +216,16 @@
         "SentiSYS",
         "TokenizerCompare"
       ],
+      "Machine Learning + Fullstack": [
+        "KeyKeg"
+      ],
+      "Generative AI": [
+        "Snippy"
+      ],
       "Fullstack": [
         "Certi-gen",
         "nschr",
         "Rekol"
-      ],
-      "Machine Learning + Fullstack": [
-        "KeyKeg"
       ],
       "Frontend/Personal Projects": [
         "Portfolio"
@@ -235,9 +238,6 @@
       ],
       "Bots": [
         "Lavalink-Music-Bot"
-      ],
-      "Generative AI": [
-        "Snippy"
       ]
     }
   }
