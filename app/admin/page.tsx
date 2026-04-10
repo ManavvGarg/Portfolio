@@ -153,7 +153,7 @@ export default function AdminPage() {
 
       {/* Content */}
       <div className="p-4 max-w-4xl mx-auto">
-        {activeTab === "sidebar" && <SidebarEditor data={data} update={update} />}
+        {activeTab === "sidebar" && <SidebarEditor data={data} update={update} password={password} />}
         {activeTab === "about" && <AboutEditor data={data} update={update} />}
         {activeTab === "resume" && <ResumeEditor data={data} update={update} password={password} />}
         {activeTab === "projects" && <ProjectsEditor data={data} update={update} />}
@@ -242,11 +242,68 @@ function ArrayField({
 
 // Section editors
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function SidebarEditor({ data, update }: { data: any; update: (path: string, value: any) => void }) {
+function SidebarEditor({ data, update, password }: { data: any; update: (path: string, value: any) => void; password: string }) {
   const s = data.sidebar;
+  const [uploadingImage, setUploadingImage] = useState(false);
+  const [imageUploadMsg, setImageUploadMsg] = useState("");
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploadingImage(true);
+    setImageUploadMsg("");
+    try {
+      const formData = new FormData();
+      formData.append("profileImage", file);
+      const res = await fetch("/api/admin/profile-image", {
+        method: "PUT",
+        headers: { "x-admin-password": password },
+        body: formData,
+      });
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error || "Upload failed");
+      }
+      const result = await res.json();
+      update("sidebar.profileImage", result.path);
+      setImageUploadMsg("Profile image uploaded successfully!");
+    } catch (err) {
+      setImageUploadMsg(err instanceof Error ? err.message : "Upload failed");
+    }
+    setUploadingImage(false);
+    setTimeout(() => setImageUploadMsg(""), 3000);
+  };
+
   return (
     <div>
       <h2 className="text-base font-bold mb-4">Sidebar Info</h2>
+
+      {/* Profile Image Upload */}
+      <div className="mb-4 border border-black dark:border-white p-3">
+        <label className="text-xs font-bold block mb-2">Upload Profile Image</label>
+        <input
+          type="file"
+          accept=".jpg,.jpeg,.png,.webp"
+          onChange={handleImageUpload}
+          disabled={uploadingImage}
+          className="text-xs font-mono"
+        />
+        {uploadingImage && <p className="text-xs mt-1">Uploading...</p>}
+        {imageUploadMsg && (
+          <p className={`text-xs mt-1 ${imageUploadMsg.includes("success") ? "text-green-600" : "text-red-500"}`}>
+            {imageUploadMsg}
+          </p>
+        )}
+        <p className="text-xs mt-2 text-gray-500">
+          Current: {s.profileImage}
+        </p>
+      </div>
+
+      <Field
+        label="Profile Image Path (auto-updated on upload)"
+        value={s.profileImage}
+        onChange={(v) => update("sidebar.profileImage", v)}
+      />
       <Field label="Name" value={s.name} onChange={(v) => update("sidebar.name", v)} />
       <ArrayField
         label="Titles"
@@ -314,11 +371,6 @@ function SidebarEditor({ data, update }: { data: any; update: (path: string, val
         label="GitHub Username"
         value={s.githubUsername}
         onChange={(v) => update("sidebar.githubUsername", v)}
-      />
-      <Field
-        label="Profile Image Path"
-        value={s.profileImage}
-        onChange={(v) => update("sidebar.profileImage", v)}
       />
     </div>
   );
@@ -758,6 +810,19 @@ function ResumeEditor({ data, update, password }: { data: any; update: (path: st
 function ProjectsEditor({ data, update }: { data: any; update: (path: string, value: any) => void }) {
   const p = data.projects;
   const [newCategory, setNewCategory] = useState("");
+  const categoryKeys = Object.keys(p.categories);
+
+  const moveCategory = (index: number, direction: -1 | 1) => {
+    const newIndex = index + direction;
+    if (newIndex < 0 || newIndex >= categoryKeys.length) return;
+    const reordered = [...categoryKeys];
+    [reordered[index], reordered[newIndex]] = [reordered[newIndex], reordered[index]];
+    const newCategories: Record<string, string[]> = {};
+    for (const key of reordered) {
+      newCategories[key] = p.categories[key];
+    }
+    update("projects.categories", newCategories);
+  };
 
   return (
     <div>
@@ -767,10 +832,30 @@ function ProjectsEditor({ data, update }: { data: any; update: (path: string, va
         value={p.baseUrl}
         onChange={(v) => update("projects.baseUrl", v)}
       />
-      {Object.entries(p.categories).map(([category, repos]) => (
+      {categoryKeys.map((category, index) => (
         <div key={category} className="border border-black dark:border-white p-3 mb-3">
           <div className="flex items-center justify-between mb-2">
-            <h4 className="text-xs font-bold">{category}</h4>
+            <div className="flex items-center gap-2">
+              <div className="flex flex-col gap-0.5">
+                <button
+                  onClick={() => moveCategory(index, -1)}
+                  disabled={index === 0}
+                  className="border border-black dark:border-white px-1.5 py-0 text-xs leading-tight hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black disabled:opacity-30 disabled:cursor-not-allowed"
+                  title="Move up"
+                >
+                  ↑
+                </button>
+                <button
+                  onClick={() => moveCategory(index, 1)}
+                  disabled={index === categoryKeys.length - 1}
+                  className="border border-black dark:border-white px-1.5 py-0 text-xs leading-tight hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black disabled:opacity-30 disabled:cursor-not-allowed"
+                  title="Move down"
+                >
+                  ↓
+                </button>
+              </div>
+              <h4 className="text-xs font-bold">{category}</h4>
+            </div>
             <button
               onClick={() => {
                 const copy = { ...p.categories };
@@ -784,7 +869,7 @@ function ProjectsEditor({ data, update }: { data: any; update: (path: string, va
           </div>
           <ArrayField
             label="Repositories"
-            items={repos as string[]}
+            items={p.categories[category] as string[]}
             onChange={(v) => {
               const copy = { ...p.categories };
               copy[category] = v;
