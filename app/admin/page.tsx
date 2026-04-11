@@ -1309,12 +1309,21 @@ function BlogEditor({ password }: { password: string }) {
                         <span className="flex-1 truncate">{m.name}</span>
                         <code
                           className="text-[10px] cursor-pointer hover:underline border border-black dark:border-white px-1.5 py-0.5 shrink-0"
-                          title="Click to copy markdown"
+                          title="Copy Markdown"
                           onClick={() =>
                             navigator.clipboard.writeText(`![${m.name}](${m.path})`)
                           }
                         >
-                          Copy ![...]
+                          MD
+                        </code>
+                        <code
+                          className="text-[10px] cursor-pointer hover:underline border border-black dark:border-white px-1.5 py-0.5 shrink-0"
+                          title="Copy HTML"
+                          onClick={() =>
+                            navigator.clipboard.writeText(`<img src="${m.path}" alt="${m.name}" width="50%" />`)
+                          }
+                        >
+                          HTML
                         </code>
                       </div>
                     ))}

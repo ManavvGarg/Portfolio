@@ -1,6 +1,7 @@
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 
 function isVideoSrc(src: string): boolean {
   return /\.(mp4|webm|mov|ogg)(\?|$)/i.test(src);
@@ -11,6 +12,7 @@ export default function BlogContent({ content }: { content: string }) {
     <div className="blog-prose text-xs md:text-sm">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
+        rehypePlugins={[rehypeRaw]}
         components={{
           img: ({ src, alt }) => {
             if (!src || typeof src !== "string") return null;
@@ -34,7 +36,7 @@ export default function BlogContent({ content }: { content: string }) {
                 alt={alt || ""}
                 width={800}
                 height={450}
-                className="w-full h-auto my-4 border border-black dark:border-white"
+                className="w-1/2 h-auto my-4 border border-black dark:border-white"
                 sizes="(max-width: 768px) 100vw, 768px"
               />
             );
