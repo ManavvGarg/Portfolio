@@ -2,9 +2,8 @@
   "sidebar": {
     "name": "Manav Garg",
     "titles": [
-      "Aspiring Machine Learning Engineer",
-      "Data Science Enthusiast",
-      "Research-Oriented Developer"
+      "Polymath",
+      "anything. everything."
     ],
     "bio": "Motivated by curiosity and driven by data —\nI combine code, creativity, and critical\nthinking to build intelligent systems and\nexplore the frontier of AI.",
     "quote": {
@@ -13,8 +12,8 @@
     },
     "location": "India (Bangalore Urban)",
     "company": {
-      "name": "IHX Pvt. Ltd. - A Perfios Company",
-      "url": "https://www.linkedin.com/company/ihx-india/"
+      "name": "Vault22 - (Freelance)",
+      "url": "https://www.linkedin.com/company/vault22global/"
     },
     "social": {
       "github": {
@@ -36,24 +35,22 @@
   },
   "about": {
     "paragraphs": [
-      "Manav is a 22-year-old Software Developer and Machine Learning Engineer with expertise in graphic design and UI/UX. He possesses proficiency in multiple programming languages and technologies, including Python, Java, JavaScript, C/C++, TensorFlow, PyTorch, Scikit-Learn, Django, React, and Figma.",
-      "His technical competencies extend to natural language processing, computer vision, data mining, and big data analytics. Manav demonstrates exceptional motivation and results-oriented work ethics, consistently exhibiting a collaborative mindset and an insatiable appetite for knowledge acquisition."
+      "I'm 22, and I can't help being obsessive about things — ML papers at 2am, why a UI feels slightly off, how a system breaks under load. I go deep. I'm a Software Developer, Machine Learning Engineer, and designer, not because I had to pick everything, but because I genuinely couldn't stop at one.\n",
+      "Outside of that, well- \nfast cars, mountain roads, live motorsport, ethereal places, great food. \nLife's too short to sit still."
     ],
     "achievements": [
-      "Secured a global rank within the top 3,000 in the all-India VIT entrance examination",
-      "Developed strong communication and presentation skills complemented by an analytical mindset",
-      "Established expertise in Data Structures, Algorithms, and Modern ML techniques",
-      "Mastered full-stack development capabilities with end-to-end API integration",
-      "Demonstrated proficiency in Python ML libraries including TensorFlow and OpenCV",
-      "Cultivated professional skills in UI/UX design using Figma, Adobe Photoshop, and Illustrator"
+      "Reduced infrastructure and pipeline operating costs by 20–25% at Vault22 through workload restructuring and automation.",
+      "Reduced LLM hallucinations by over 70% through systematic prompt engineering at IHX.",
+      "Cut data processing time from 24–36 hours to under 5 hours at IHX while improving dataset quality.",
+      "Restructured data lakes and resolved ETL pipeline failures, improving data integrity and cross-team accessibility ",
+      "Built a full Web HMIS portal enabling instant patient record retrieval for medical practitioners (Sold it to local clinics as well)"
     ],
     "professionalInterests": [
-      "Manav is deeply fascinated by the potential of data-driven technologies to address real-world challenges and facilitate intelligent decision-making through automation and insight.",
-      "He aspires to contribute to research-oriented projects, with particular emphasis on practical ML applications, model interpretability, and responsible AI implementation.",
-      "Currently exploring domains such as natural language processing, computer vision, and reinforcement learning, while simultaneously strengthening his foundation in statistics, algorithms, and data analysis.",
-      "His professional objective is to develop into a comprehensive machine learning engineer and data scientist, equipped with the technical capabilities to work on both production-grade systems and experimental prototypes."
+      "I want ML that actually ships — intelligent systems doing real work at real scale, not notebooks that never see production.",
+      "I'm deep in NLP, computer vision, and reinforcement learning, and obsessive about getting the maths and statistics right underneath it all.",
+      "I'm not trying to be a specialist. I want to understand everything. The polymath thing isn't an aesthetic — it's just how I think."
     ],
-    "beyondTechnology": "Manav is also a self-taught designer, enthusiastic gamer, casual culinary enthusiast, and visual thinker — he firmly believes that creative expression complements and enhances analytical thinking in technology environments."
+    "beyondTechnology": "Self-taught designer. Visual thinker. I find the same thrill in cracking a hard problem as I do watching a perfect overtake at the last corner. I believe the best engineers are the ones who don't only do engineering."
   },
   "resume": {
     "resumeLink": "/Resume_Manav_Garg.pdf",
