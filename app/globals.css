@@ -24,6 +24,16 @@ body {
   }
 }
 
+/* Theme color mapping: black/white resolve to theme colors per mode */
+:root {
+  --color-black: var(--theme-light-fg, #000000);
+  --color-white: var(--theme-light-bg, #ffffff);
+}
+.dark {
+  --color-black: var(--theme-dark-bg, #000000);
+  --color-white: var(--theme-dark-fg, #ffffff);
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -115,23 +125,23 @@ body {
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #000000;
+  background-color: var(--color-black);
   border: none;
 }
 
 /* For Firefox */
 .custom-scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: #000000 transparent;
+  scrollbar-color: var(--color-black) transparent;
 }
 
 /* For dark mode */
 .dark .custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #ffffff;
+  background-color: var(--color-white);
 }
 
 .dark .custom-scrollbar {
-  scrollbar-color: #ffffff transparent;
+  scrollbar-color: var(--color-white) transparent;
 }
 
 /* Add this at the end of the file to enhance mobile responsiveness */
@@ -278,22 +288,22 @@ body {
   font-size: 0.85em;
   padding: 0.15em 0.35em;
   border: 1px solid;
-  border-color: #000;
+  border-color: var(--color-black);
 }
 
 .dark .blog-prose code {
-  border-color: #fff;
+  border-color: var(--color-white);
 }
 
 .blog-prose pre {
   margin-bottom: 1rem;
   padding: 1rem;
   overflow-x: auto;
-  border: 1px solid #000;
+  border: 1px solid var(--color-black);
 }
 
 .dark .blog-prose pre {
-  border-color: #fff;
+  border-color: var(--color-white);
 }
 
 .blog-prose pre code {
@@ -315,11 +325,11 @@ body {
   max-width: 100%;
   height: auto;
   margin: 1rem 0;
-  border: 1px solid #000;
+  border: 1px solid var(--color-black);
 }
 
 .dark .blog-prose img {
-  border-color: #fff;
+  border-color: var(--color-white);
 }
 
 /* Better tap targets for mobile */

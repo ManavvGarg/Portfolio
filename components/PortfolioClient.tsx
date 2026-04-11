@@ -34,6 +34,7 @@ export default function PortfolioClient({ data }: { data: any }) {
   const [active, setActive] = useState<PageKey>("home");
   const s = data.sidebar;
 
+
   const renderActivePage = () => {
     switch (active) {
       case "home":

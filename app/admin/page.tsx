@@ -9,7 +9,7 @@ const ibmPlexMono = IBM_Plex_Mono({
   display: "swap",
 });
 
-type Tab = "sidebar" | "about" | "resume" | "projects" | "blog";
+type Tab = "sidebar" | "about" | "resume" | "projects" | "blog" | "theme";
 
 export default function AdminPage() {
   const [password, setPassword] = useState("");
@@ -109,7 +109,7 @@ export default function AdminPage() {
 
   if (!data) return <div className="p-8">Loading...</div>;
 
-  const tabs: Tab[] = ["sidebar", "about", "resume", "projects", "blog"];
+  const tabs: Tab[] = ["sidebar", "about", "resume", "projects", "blog", "theme"];
 
   return (
     <div className={`min-h-screen ${ibmPlexMono.className}`}>
@@ -158,6 +158,7 @@ export default function AdminPage() {
         {activeTab === "resume" && <ResumeEditor data={data} update={update} password={password} />}
         {activeTab === "projects" && <ProjectsEditor data={data} update={update} />}
         {activeTab === "blog" && <BlogEditor password={password} />}
+        {activeTab === "theme" && <ThemeEditor data={data} update={update} />}
       </div>
     </div>
   );
@@ -1330,3 +1331,141 @@ function BlogEditor({ password }: { password: string }) {
   );
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function ThemeEditor({ data, update }: { data: any; update: (path: string, value: any) => void }) {
+  const defaultTheme = {
+    light: { background: "#ffffff", foreground: "#0a0a0a", border: "#e5e5e5" },
+    dark: { background: "#0a0a0a", foreground: "#fafafa", border: "#4d4d4d" },
+  };
+  const theme = data.theme || defaultTheme;
+
+  useEffect(() => {
+    if (!data.theme) {
+      update("theme", defaultTheme);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const ColorField = ({ label, value, onChange }: { label: string; value: string; onChange: (v: string) => void }) => (
+    <div className="mb-3">
+      <label className="text-xs font-bold block mb-1">{label}</label>
+      <div className="flex items-center gap-2">
+        <input
+          type="color"
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          className="w-10 h-8 border border-black dark:border-white cursor-pointer bg-transparent"
+        />
+        <input
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          className="flex-1 border border-black dark:border-white p-2 bg-transparent text-xs font-mono uppercase"
+          placeholder="#000000"
+        />
+      </div>
+    </div>
+  );
+
+  return (
+    <div>
+      <h2 className="text-base font-bold mb-4">Theme Colors</h2>
+      <p className="text-xs mb-4 opacity-70">
+        Customize the color scheme of your portfolio. Changes apply after saving.
+      </p>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Light Mode */}
+        <div className="border border-black dark:border-white p-4">
+          <h3 className="text-sm font-bold mb-3">Light Mode</h3>
+          <div className="mb-3 p-3 border border-dashed border-black dark:border-white" style={{ backgroundColor: theme.light.background, color: theme.light.foreground }}>
+            <p className="text-xs font-mono">Preview text on background</p>
+          </div>
+          <ColorField
+            label="Background"
+            value={theme.light.background}
+            onChange={(v) => update("theme.light.background", v)}
+          />
+          <ColorField
+            label="Text / Foreground"
+            value={theme.light.foreground}
+            onChange={(v) => update("theme.light.foreground", v)}
+          />
+          <ColorField
+            label="Border"
+            value={theme.light.border}
+            onChange={(v) => update("theme.light.border", v)}
+          />
+        </div>
+
+        {/* Dark Mode */}
+        <div className="border border-black dark:border-white p-4">
+          <h3 className="text-sm font-bold mb-3">Dark Mode</h3>
+          <div className="mb-3 p-3 border border-dashed border-black dark:border-white" style={{ backgroundColor: theme.dark.background, color: theme.dark.foreground }}>
+            <p className="text-xs font-mono">Preview text on background</p>
+          </div>
+          <ColorField
+            label="Background"
+            value={theme.dark.background}
+            onChange={(v) => update("theme.dark.background", v)}
+          />
+          <ColorField
+            label="Text / Foreground"
+            value={theme.dark.foreground}
+            onChange={(v) => update("theme.dark.foreground", v)}
+          />
+          <ColorField
+            label="Border"
+            value={theme.dark.border}
+            onChange={(v) => update("theme.dark.border", v)}
+          />
+        </div>
+      </div>
+
+      <div className="mt-4 p-3 border border-black dark:border-white bg-gray-50 dark:bg-gray-900">
+        <p className="text-xs font-bold mb-1">Quick presets:</p>
+        <div className="flex flex-wrap gap-2">
+          <button
+            onClick={() => {
+              update("theme.dark.background", "#0D1117");
+              update("theme.dark.foreground", "#C9D1D9");
+              update("theme.dark.border", "#30363D");
+            }}
+            className="border border-black dark:border-white px-3 py-1 text-xs hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+          >
+            GitHub Dark
+          </button>
+          <button
+            onClick={() => {
+              update("theme.dark.background", "#1a1b26");
+              update("theme.dark.foreground", "#a9b1d6");
+              update("theme.dark.border", "#3b4261");
+            }}
+            className="border border-black dark:border-white px-3 py-1 text-xs hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+          >
+            Tokyo Night
+          </button>
+          <button
+            onClick={() => {
+              update("theme.dark.background", "#0a0a0a");
+              update("theme.dark.foreground", "#fafafa");
+              update("theme.dark.border", "#4d4d4d");
+            }}
+            className="border border-black dark:border-white px-3 py-1 text-xs hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+          >
+            Default Dark
+          </button>
+          <button
+            onClick={() => {
+              update("theme.light.background", "#ffffff");
+              update("theme.light.foreground", "#0a0a0a");
+              update("theme.light.border", "#e5e5e5");
+            }}
+            className="border border-black dark:border-white px-3 py-1 text-xs hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+          >
+            Default Light
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}

@@ -19,16 +19,14 @@ export default function HomePage({ data }: { data: AboutData }) {
           </p>
         ))}
 
-        <p className="mb-4">
-          <b>Achievements:</b>
-          <br />
-          {data.achievements.map((a, i) => (
-            <span key={i}>
-              • {a}
-              <br />
-            </span>
-          ))}
-        </p>
+        <div className="mb-4">
+          <b>Achievements</b>
+          <ul className="list-disc pl-5 mt-2 space-y-2">
+            {data.achievements.map((a, i) => (
+              <li key={i}>{a}</li>
+            ))}
+          </ul>
+        </div>
 
         <div className="mb-4">
           <b>Professional Interests</b>

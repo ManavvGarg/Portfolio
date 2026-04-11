@@ -202,6 +202,18 @@
       }
     ]
   },
+  "theme": {
+    "light": {
+      "background": "#ffffff",
+      "foreground": "#0a0a0a",
+      "border": "#e5e5e5"
+    },
+    "dark": {
+      "background": "#1a1b26",
+      "foreground": "#a9b1d6",
+      "border": "#3b4261"
+    }
+  },
   "projects": {
     "baseUrl": "https://gh-rdme-stats.vercel.app/api/pin/?username=manavvgarg&repo=",
     "categories": {

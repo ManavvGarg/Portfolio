@@ -1,7 +1,10 @@
 import type React from "react";
 import "./globals.css";
 import type { Metadata } from "next";
+import { promises as fs } from "fs";
+import path from "path";
 import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeApplier } from "@/components/ThemeApplier";
 import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
@@ -9,11 +12,23 @@ export const metadata: Metadata = {
   description: "Personal portfolio of Manav Garg",
 };
 
-export default function RootLayout({
+async function getTheme() {
+  try {
+    const filePath = path.join(process.cwd(), "data", "portfolio.json");
+    const text = await fs.readFile(filePath, "utf8");
+    const data = JSON.parse(text);
+    return data.theme;
+  } catch {
+    return undefined;
+  }
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const theme = await getTheme();
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -33,13 +48,14 @@ export default function RootLayout({
           content={metadata.description?.toString() ?? ""}
         />
       </head>
-      <body className={`bg-white text-black dark:bg-black dark:text-white`}>
+      <body className="bg-white text-black dark:bg-black dark:text-white">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
+          <ThemeApplier theme={theme} />
           {children}
         </ThemeProvider>
         <Analytics />
