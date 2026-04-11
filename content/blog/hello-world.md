@@ -6,11 +6,12 @@ tags: ["intro", "personal"]
 ---
 
 
+
 # Hello World
 
 Welcome to my blog. This is where I'll be sharing thoughts on machine learning, software engineering, and everything in between.
 
-![1663c956-69ed-474f-ac86-68ec62b3b8f3.jpeg](/blog/hello-world/1663c956-69ed-474f-ac86-68ec62b3b8f3.jpeg)
+<img src="/blog/hello-world/1663c956-69ed-474f-ac86-68ec62b3b8f3.jpeg" alt="1663c956-69ed-474f-ac86-68ec62b3b8f3.jpeg" width="100%" />
 
 ## Why a blog?
 
