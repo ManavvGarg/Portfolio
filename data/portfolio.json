@@ -209,9 +209,9 @@
       "border": "#e5e5e5"
     },
     "dark": {
-      "background": "#1a1b26",
-      "foreground": "#a9b1d6",
-      "border": "#3b4261"
+      "background": "#0b0b0e",
+      "foreground": "#e2e8fd",
+      "border": "#ffffff"
     }
   },
   "projects": {
@@ -248,18 +248,6 @@
       "Bots": [
         "Lavalink-Music-Bot"
       ]
-    }
-  },
-  "theme": {
-    "light": {
-      "background": "#ffffff",
-      "foreground": "#0a0a0a",
-      "border": "#e5e5e5"
-    },
-    "dark": {
-      "background": "#0b0b0e",
-      "foreground": "#a9b1d6",
-      "border": "#ffffff"
     }
   }
 }
