@@ -6,6 +6,7 @@ tags: ["sunday", "baking", "recipe"]
 ---
 
 
+
 ## I Baked a Red Velvet Cake Because I Felt Like It.
 
 There are evenings where you doom scroll and call it a day. And then there are evenings where you decide, for no real reason, that you’re going to bake a full red velvet cake.
@@ -114,7 +115,7 @@ But sometimes that’s exactly the point :)
 
 ## RECIPE:
 
-<b>For Cake</br>:
+For Cake:
 - [ ] ½ cup approx. 115g butter, room temperature
 - [ ] 1-2 tablespoons Red food coloring
 - [ ] 2 teaspoons Vanilla extract
@@ -128,14 +129,14 @@ But sometimes that’s exactly the point :)
 - [ ] 2 tablespoons approx. 16g Cocoa powder
 - [ ] 2½ cups approx. 310g all-purpose flour
 
-<b>For the Cream Cheese Frosting:</b>
+For the Cream Cheese Frosting:
 - [ ] cream cheese room temperature (450g)
 - [ ] 1 ½ cups unsalted butter room temperature (approx 340g)
 - [ ] 1 teaspoon vanilla extract
 - [ ] Pinch of salt
 - [ ] Confectioners sugar sifted (5½ cups/675g)
 
-<b>Method</b>
+Method:
 
 1. Preheat oven to 350F (175C). 
 
