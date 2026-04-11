@@ -930,6 +930,7 @@ function BlogEditor({ password }: { password: string }) {
   const [media, setMedia] = useState<BlogMedia[]>([]);
   const [uploading, setUploading] = useState(false);
   const [uploadMsg, setUploadMsg] = useState("");
+  const [hoveredMedia, setHoveredMedia] = useState<{ path: string; name: string; rect: DOMRect } | null>(null);
 
   // Status
   const [loading, setLoading] = useState(false);
@@ -1071,40 +1072,53 @@ function BlogEditor({ password }: { password: string }) {
   const handleMediaUpload = async (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
-    const file = e.target.files?.[0];
+    const files = Array.from(e.target.files || []);
     const targetSlug = isNew ? slug.trim() : selectedSlug;
-    if (!file || !targetSlug) {
+    if (!files.length || !targetSlug) {
       setUploadMsg("Save the post first (need a slug for media folder)");
       return;
     }
     setUploading(true);
-    setUploadMsg("");
-    try {
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("slug", targetSlug);
-      const res = await fetch("/api/admin/blog/media", {
-        method: "PUT",
-        headers,
-        body: formData,
-      });
-      if (!res.ok) {
-        const err = await res.json();
-        throw new Error(err.error || "Upload failed");
+    setUploadMsg(`Uploading 0 / ${files.length}...`);
+    let successCount = 0;
+    let failCount = 0;
+    for (const file of files) {
+      try {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("slug", targetSlug);
+        const res = await fetch("/api/admin/blog/media", {
+          method: "PUT",
+          headers,
+          body: formData,
+        });
+        if (!res.ok) {
+          const err = await res.json();
+          throw new Error(err.error || "Upload failed");
+        }
+        const result = await res.json();
+        setMedia((prev) => [
+          ...prev,
+          { name: result.name, path: result.path, size: 0 },
+        ]);
+        successCount++;
+        setUploadMsg(`Uploading ${successCount} / ${files.length}...`);
+      } catch {
+        failCount++;
       }
-      const result = await res.json();
-      setMedia((prev) => [
-        ...prev,
-        { name: result.name, path: result.path, size: 0 },
-      ]);
-      setUploadMsg("Uploaded!");
-    } catch (err) {
-      setUploadMsg(err instanceof Error ? err.message : "Upload failed");
     }
     setUploading(false);
     e.target.value = "";
-    setTimeout(() => setUploadMsg(""), 3000);
+    if (failCount === 0) {
+      setUploadMsg(`Uploaded ${successCount} file${successCount > 1 ? "s" : ""}!`);
+    } else {
+      setUploadMsg(`${successCount} uploaded, ${failCount} failed`);
+    }
+    setTimeout(() => setUploadMsg(""), 4000);
   };
+
+  const isImageFile = (name: string) =>
+    /\.(jpg|jpeg|png|gif|webp|svg|bmp)$/i.test(name);
 
   const slugify = (text: string) =>
     text
@@ -1258,45 +1272,47 @@ function BlogEditor({ password }: { password: string }) {
                 <label className="text-xs font-bold block mb-2">
                   Media Files
                 </label>
-                <div className="mb-2">
+                <div className="mb-2 flex items-center gap-2 flex-wrap">
                   <input
                     type="file"
                     accept="image/*,video/*"
+                    multiple
                     onChange={handleMediaUpload}
                     disabled={uploading || (!slug.trim() && !selectedSlug)}
-                    className="text-xs font-mono"
+                    className="text-xs font-mono file:mr-2 file:py-1 file:px-3 file:border file:border-black dark:file:border-white file:bg-transparent file:text-xs file:font-mono file:cursor-pointer file:text-black dark:file:text-white"
                   />
-                  {uploading && (
-                    <span className="text-xs ml-2">Uploading...</span>
-                  )}
                   {uploadMsg && (
                     <span
-                      className={`text-xs ml-2 ${uploadMsg === "Uploaded!" ? "text-green-600" : "text-red-500"}`}
+                      className={`text-xs ${uploadMsg.includes("failed") ? "text-red-500" : "text-green-600"}`}
                     >
                       {uploadMsg}
                     </span>
                   )}
                 </div>
                 <p className="text-[10px] text-gray-500 mb-2">
-                  Files are stored in public/blog/{slug || selectedSlug || "<slug>"}/.
-                  Use the markdown snippets below to embed them.
+                  Select one or multiple files. Stored in public/blog/{slug || selectedSlug || "<slug>"}/. Hover a file to preview.
                 </p>
                 {media.length > 0 && (
                   <div className="space-y-1">
                     {media.map((m) => (
                       <div
                         key={m.name}
-                        className="flex items-center gap-2 text-xs font-mono bg-gray-50 dark:bg-gray-900 p-1.5"
+                        className="relative flex items-center gap-2 text-xs font-mono bg-gray-50 dark:bg-gray-900 p-1.5"
+                        onMouseEnter={(e) =>
+                          setHoveredMedia({ path: m.path, name: m.name, rect: e.currentTarget.getBoundingClientRect() })
+                        }
+                        onMouseLeave={() => setHoveredMedia(null)}
                       >
+                        {isImageFile(m.name) && (
+                          <span className="text-[10px] opacity-50 shrink-0">img</span>
+                        )}
                         <span className="flex-1 truncate">{m.name}</span>
                         <code
                           className="text-[10px] cursor-pointer hover:underline border border-black dark:border-white px-1.5 py-0.5 shrink-0"
-                          title="Click to copy"
-                          onClick={() => {
-                            navigator.clipboard.writeText(
-                              `![${m.name}](${m.path})`
-                            );
-                          }}
+                          title="Click to copy markdown"
+                          onClick={() =>
+                            navigator.clipboard.writeText(`![${m.name}](${m.path})`)
+                          }
                         >
                           Copy ![...]
                         </code>
@@ -1305,6 +1321,27 @@ function BlogEditor({ password }: { password: string }) {
                   </div>
                 )}
               </div>
+
+              {/* Hover preview portal */}
+              {hoveredMedia && isImageFile(hoveredMedia.name) && (
+                <div
+                  className="fixed z-50 border border-black dark:border-white bg-white dark:bg-black p-2 shadow-lg pointer-events-none"
+                  style={{
+                    left: Math.min(hoveredMedia.rect.right + 12, window.innerWidth - 300),
+                    top: Math.max(8, Math.min(hoveredMedia.rect.top, window.innerHeight - 280)),
+                  }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={hoveredMedia.path}
+                    alt={hoveredMedia.name}
+                    className="max-w-[260px] max-h-[220px] object-contain block"
+                  />
+                  <p className="text-[10px] font-mono mt-1 truncate max-w-[260px] opacity-60">
+                    {hoveredMedia.name}
+                  </p>
+                </div>
+              )}
 
               {/* Bottom publish */}
               <div className="flex items-center justify-end gap-2">
