@@ -247,7 +247,7 @@
     "dark": {
       "background": "#1a1b26",
       "foreground": "#a9b1d6",
-      "border": "#3b4261"
+      "border": "#ffffff"
     }
   }
 }
