@@ -14,7 +14,7 @@ export default function BlogContent({ content }: { content: string }) {
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
         components={{
-          img: ({ src, alt }) => {
+          img: ({ src, alt, width }) => {
             if (!src || typeof src !== "string") return null;
 
             if (isVideoSrc(src)) {
@@ -30,6 +30,20 @@ export default function BlogContent({ content }: { content: string }) {
               );
             }
 
+            // Raw <img> with explicit width — honour it, use plain img tag
+            if (width) {
+              return (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={src}
+                  alt={alt || ""}
+                  style={{ width: width as string, height: "auto" }}
+                  className="my-4 border border-black dark:border-white"
+                />
+              );
+            }
+
+            // Default markdown image — 50% width via Next.js Image
             return (
               <Image
                 src={src}
