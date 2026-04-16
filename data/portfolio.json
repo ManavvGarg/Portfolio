@@ -36,7 +36,8 @@
   "about": {
     "paragraphs": [
       "I'm 22, and I can't help being obsessive about things — ML papers at 2am, why a UI feels slightly off, how a system breaks under load. I go deep. I'm a Software Developer, Machine Learning Engineer, and designer, not because I had to pick everything, but because I genuinely couldn't stop at one.\n",
-      "Outside of that, well- \nfast cars, mountain roads, live motorsport, ethereal places, great food. \nLife's too short to sit still."
+      "Outside of that-\nfast cars, mountain roads, live motorsport, ethereal places, great food. \nLife's too short to sit still.",
+      "Professionally-\nAI/ML Engineer with 2+ years of hands-on experience designing, training, and deploying machine learning systems end-to-end — from raw data ingestion to production inference. Deep expertise in MLOps, LLM/RAG architectures, multimodal models, and cloud-native ML infrastructure on AWS. Proven track record of cutting pipeline runtimes by 80%+, reducing hallucinations by 70%+, and slashing infrastructure costs by 20–25%. Comfortable owning the full stack: model research, scalable deployment, monitoring, and business-facing analytics."
     ],
     "achievements": [
       "Reduced infrastructure and pipeline operating costs by 20–25% at Vault22 through workload restructuring and automation.",
@@ -58,25 +59,25 @@
       {
         "institution": "Vellore Institute of Technology, Chennai",
         "degree": "B.Tech, Computer Science Engineering",
-        "period": "2020–2025",
+        "period": "2021–2025",
         "specialization": "AI/ML",
         "cgpa": "8.51",
         "cgpaMax": "10",
-        "currentSemester": "8th"
+        "currentSemester": "Finished"
       }
     ],
     "experience": [
       {
         "company": "Vault22",
-        "current": true,
+        "current": false,
         "roles": [
           {
             "title": "Independent Consultant - Machine Learning & AI",
-            "period": "October 2025 - Present"
+            "period": "October 2025 - April 2026"
           }
         ],
         "startDate": "2025-10",
-        "endDate": null,
+        "endDate": "2026-04",
         "bullets": [
           "Worked on tariff digitization initiatives.",
           "Led comprehensive data mining, preparation, and cleansing processes.",
@@ -104,7 +105,7 @@
           }
         ],
         "startDate": "2025-01",
-        "endDate": null,
+        "endDate": "2026-03",
         "bullets": [
           "Worked on tariff digitization initiatives.",
           "Led comprehensive data mining, preparation, and cleansing processes.",
