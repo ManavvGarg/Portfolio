@@ -79,16 +79,12 @@
         "startDate": "2025-10",
         "endDate": "2026-04",
         "bullets": [
-          "Worked on tariff digitization initiatives.",
-          "Led comprehensive data mining, preparation, and cleansing processes.",
-          "Developed and trained custom model architectures, including but not limited to YOLO, Donut, and Custom Encoder-Decoder Models, as well as using RAG + LLM based pipelines.",
-          "Reduced data processing time from 24-36 hours to 4-5 hours using preprocessing and postprocessing techniques and finely constructed datasets.",
-          "Implemented robust backend APIs and deployment engines enabling scalable production deployment of machine learning solutions.",
-          "Introduced asynchronous processing to help APIs scale in production environments and handle large traffic volumes, drastically reducing downtime risk.",
-          "Led cost-optimization initiatives that reduced overall infrastructure and pipeline operating costs by 20–25% through workload restructuring and resource-efficient automation.",
-          "Optimized and deployed AWS services for scalable self-hosted model deployments and improved compute efficiency.",
-          "Performed extensive data cleaning, resolved ETL workflow issues, and restructured data lakes to ensure reliability, consistency, and accessibility.",
-          "Built analytics workflows and metric dashboards using Amazon QuickSight, enabling data-driven decision-making for business teams and investors."
+          "Reduced overall infrastructure and ML pipeline operating costs by 20–25% through workload restructuring, resource-efficient automation, and compute-optimized AWS configurations.",
+          "Architected and deployed scalable, self-hosted model serving infrastructure on AWS, improving performance reliabilityand reducing per-inference compute overhead.",
+          "Rebuilt end-to-end ETL pipelines and data lake architecture, resolving systemic failures and improving data integrity, consistency, and cross-team accessibility.",
+          "Designed and shipped custom admin portals with KPI dashboards in Amazon QuickSight, enabling real-time metrictracking for business leadership and investor reporting.",
+          "Optimized MongoDB storage collections and indexes, and refactored backend pipelines to eliminate errors andimprove query throughput.",
+          "Designed and deployed scalable asynchronous ML inference systems supporting continuous experimentationandrealtime production serving under strict latency and throughput constraints."
         ]
       },
       {
